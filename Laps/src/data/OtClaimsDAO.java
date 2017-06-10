@@ -1,5 +1,5 @@
 package data;
 
-public class OtClaimsDAO {
+public interface OtClaimsDAO {
 
 }
