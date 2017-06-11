@@ -1,8 +1,20 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="position")
 public class PositionDTO {
+	
+	@Id
+	@Column(name="position_id")
 	private int positionId;
+	@Column(name="access_level_id")
 	private int accessLevelId;
+	@Column(name="job_title")
 	private String jobTitle;
 
 	public PositionDTO() {

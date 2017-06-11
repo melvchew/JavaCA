@@ -5,9 +5,9 @@ import model.UsersDTO;
 
 public interface PositionDAO {
 
-	public void insertPosition(PositionDTO dto) throws Exception;
-	public void updatePosition(PositionDTO dto) throws Exception;
-	public void deletePosition(PositionDTO dto) throws Exception; //update delete coloumn flag
-	public PositionDTO getPosition(UsersDTO users) throws Exception;
+	public void insertPosition(PositionDTO dto) throws DAOException;
+	public void updatePosition(PositionDTO dto) throws DAOException;
+	public void deletePosition(PositionDTO dto) throws DAOException; //update delete coloumn flag
+	public PositionDTO getPosition(UsersDTO users) throws DAOException;
 	
 }
