@@ -1,8 +1,15 @@
 package model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="access_level")
 public class AccessLevelDTO {
 
+	@Id
+	@Column(name="access_level_id")
 	private int accessLevelId;
+	@Column(name="access_level_name")
 	private String accessLevelName;
 
 	public AccessLevelDTO() {
