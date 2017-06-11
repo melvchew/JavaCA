@@ -1,16 +1,25 @@
 package model;
 
 import java.sql.Timestamp;
-
+import javax.persistence.*;
+@Entity
+@Table(name="leave_appn")
 public class LeaveAppnDTO {
-
+	@Id
 	private int appnId;
+	@Column(name="leave_type_id")
 	private int leaveTypeId;
+	@Column(name="user_id")
 	private int userId;
+	@Column(name="appn_date")
 	private Timestamp appnDate;
+	@Column(name="start_date")
 	private Timestamp startDate;
+	@Column(name="end_date")
 	private Timestamp endDate;
+	@Column(name="emp_comments")
 	private String empComments;
+	@Column(name="mgr_comments")
 	private String mgrComments;
 	private String status;
 
