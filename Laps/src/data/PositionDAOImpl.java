@@ -7,7 +7,6 @@ import javax.persistence.Persistence;
 import model.PositionDTO;
 import model.UsersDTO;
 import model.LeaveAppnDTO;
-import model.PersistenceManager;
 
 public class PositionDAOImpl implements PositionDAO{
 	
