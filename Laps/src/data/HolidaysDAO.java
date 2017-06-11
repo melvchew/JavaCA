@@ -11,5 +11,5 @@ public interface HolidaysDAO {
 	public void updateHoliday(HolidaysDTO dto) throws Exception;
 	public void deleteHoliday(HolidaysDTO dto) throws Exception;
 	public ArrayList<HolidaysDTO> getAllHolidays() throws Exception; 
-	public ArrayList<HolidaysDTO> getHolidays(Date startdate, Date enddate) throws Exception;
+	
 }
