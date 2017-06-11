@@ -1,25 +1,33 @@
 package model;
 
-import java.sql.Timestamp;
+import java.util.*;
+import javax.persistence.*;
 
+@Entity
+@Table(name="users")
 public class UsersDTO {
+	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="user_id")
 	private int userId;
 	private String username;
 	private String password;
+	@Column(name="position_id")
 	private int positionId;
 	private String name;
-	private Timestamp dob;
+	private Date dob;
 	private String phone;
 	private String address;
 	private String email;
+	@Column(name="manager_id")
 	private int managerId;
+	@Column(name="ot_hours")
 	private double otHours;
 
 	public UsersDTO() {
 		super();
 	}
 
-	public UsersDTO(int userId, String username, String password, int positionId, String name, Timestamp dob,
+	public UsersDTO(int userId, String username, String password, int positionId, String name, Date dob,
 			String phone, String address, String email, int managerId, double otHours) {
 		super();
 		this.userId = userId;
@@ -67,11 +75,11 @@ public class UsersDTO {
 		this.name = name;
 	}
 
-	public Timestamp getDob() {
+	public Date getDob() {
 		return dob;
 	}
 
-	public void setDob(Timestamp dob) {
+	public void setDob(Date dob) {
 		this.dob = dob;
 	}
 

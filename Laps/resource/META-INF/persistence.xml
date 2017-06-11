@@ -9,11 +9,8 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-<<<<<<< HEAD
 		<class>model.AccessLevelDTO</class>
-=======
 		<class>model.LeaveAppnDTO</class>
->>>>>>> branch 'master' of https://github.com/melvchew/JavaCA.git
 
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
