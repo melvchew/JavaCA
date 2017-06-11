@@ -15,7 +15,7 @@ public class LeaveAppnDAOImpl {
 	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("jpa-laps");
 	EntityManager entitymanager = emfactory.createEntityManager();
 	
-	public void insertLeaveAppn(LeaveAppnDTO dto) throws Exception {
+	public void insertLeaveAppn(LeaveAppnDTO dto) throws DAOException {
 		try {
 
 			 entitymanager.getTransaction().begin();
@@ -26,7 +26,7 @@ public class LeaveAppnDAOImpl {
 		}
 	}
 	
-	public void updateLeaveAppn(LeaveAppnDTO dto) throws Exception {
+	public void updateLeaveAppn(LeaveAppnDTO dto) throws DAOException {
 		try {
 			LeaveAppnDTO user = entitymanager.find(LeaveAppnDTO.class, dto.getAppnId());
 			entitymanager.getTransaction().begin();
@@ -38,7 +38,7 @@ public class LeaveAppnDAOImpl {
 			throw new DAOException(msg);
 		}
 	} //reject and accept leaveappn
-	public void deleteLeaveAppn(LeaveAppnDTO dto) throws Exception {
+	public void deleteLeaveAppn(LeaveAppnDTO dto) throws DAOException {
 		try {
 			LeaveAppnDTO user = entitymanager.find(LeaveAppnDTO.class, dto.getAppnId());
 			entitymanager.getTransaction().begin();
@@ -50,7 +50,7 @@ public class LeaveAppnDAOImpl {
 			throw new DAOException(msg);
 		}
 	} //change status column to deleted.
-	public ArrayList<LeaveAppnDTO> getAllLeaveAppn() throws Exception {
+	public ArrayList<LeaveAppnDTO> getAllLeaveAppn() throws DAOException {
 		List<LeaveAppnDTO> laplist = new ArrayList<>();
 		try {
 			laplist = entitymanager.createQuery("SELECT u FROM LeaveAppnDTO u", LeaveAppnDTO.class).getResultList();
@@ -63,7 +63,7 @@ public class LeaveAppnDAOImpl {
 	}
 	
 	
-	public ArrayList<LeaveAppnDTO> getLeaveAppn(UsersDTO user) throws Exception {
+	public ArrayList<LeaveAppnDTO> getLeaveAppn(UsersDTO user) throws DAOException {
 		List<LeaveAppnDTO> laplist = new ArrayList<>();
 		try {
 			laplist = entitymanager.createQuery("SELECT u FROM LeaveAppnDTO u WHERE u.userId = :uname", LeaveAppnDTO.class).setParameter("uname", user.getUserId()).getResultList();
@@ -77,7 +77,7 @@ public class LeaveAppnDAOImpl {
 	}
 	
 	
-	public ArrayList<LeaveAppnDTO> getPendingLeaveAppn() throws Exception {
+	public ArrayList<LeaveAppnDTO> getPendingLeaveAppn() throws DAOException {
 		List<LeaveAppnDTO> laplist = new ArrayList<>();
 		try {
 			laplist = entitymanager.createQuery("SELECT u FROM LeaveAppnDTO u where u.status = 'PENDING'", LeaveAppnDTO.class).getResultList();
