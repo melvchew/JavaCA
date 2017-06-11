@@ -10,8 +10,9 @@ import model.UsersDTO;
 
 public class DefaultLeaveDAOImpl implements DefaultLeaveDAO {
 
-	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("jpa-laps");
-	EntityManager em = emfactory.createEntityManager();
+//	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("jpa-laps");
+//	EntityManager em = emfactory.createEntityManager();
+	EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
 
 	public void insertDL(DefaultLeaveDTO dl) throws DAOException {
 

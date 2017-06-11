@@ -5,8 +5,9 @@ import model.LeaveTypeDTO;
 
 public class LeaveTypeDAOImpl implements LeaveTypeDAO {
 
-	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("jpa-laps");
-	EntityManager em = emfactory.createEntityManager();
+//	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("jpa-laps");
+//	EntityManager em = emfactory.createEntityManager();
+	EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
 
 	public LeaveTypeDTO getLeaveType(int LeaveTypeId) {
 

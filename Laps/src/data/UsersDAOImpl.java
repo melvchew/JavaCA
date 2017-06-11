@@ -8,8 +8,9 @@ import model.UsersDTO;
 
 public class UsersDAOImpl implements UsersDAO {
 
-	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("jpa-laps");
-	EntityManager entitymanager = emfactory.createEntityManager();
+//	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("jpa-laps");
+//	EntityManager entitymanager = emfactory.createEntityManager();
+	EntityManager entitymanager = PersistenceManager.INSTANCE.getEntityManager();
 
 	@Override
 	public void insertUser(UsersDTO DTO) throws DAOException {

@@ -5,8 +5,9 @@ import model.AccessLevelDTO;
 
 public class AccessLevelDAOImpl implements AccessLevelDAO {
 	
-	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("jpa-laps");
-	EntityManager em = emfactory.createEntityManager();
+//	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("jpa-laps");
+//	EntityManager em = emfactory.createEntityManager();
+	EntityManager em = PersistenceManager.INSTANCE.getEntityManager();
 
 	public AccessLevelDTO getAccessLevel(int access_level_id) throws DAOException {
 

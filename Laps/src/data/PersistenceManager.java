@@ -18,7 +18,7 @@ public enum PersistenceManager {
 
 	    // persistence-unit element.
 
-	    emFactory = Persistence.createEntityManagerFactory("jpa-example");
+	    emFactory = Persistence.createEntityManagerFactory("jpa-laps");
 
 	  }
 
