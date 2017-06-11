@@ -1,9 +1,20 @@
 package model;
 
+import javax.persistence.*;
+
+import data.DefaultLeaveID;
+
+@Entity @IdClass(DefaultLeaveID.class)
+@Table(name="default_leave")
 public class DefaultLeaveDTO {
 
+	@Id
+	@Column(name="position_id")
 	private int positionId;
+	@Id
+	@Column(name="leave_type_id")
 	private int leaveTypeId;
+	@Column(name="days")
 	private double days;
 
 	public DefaultLeaveDTO() {
