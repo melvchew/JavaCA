@@ -44,7 +44,7 @@ public class UsersDAOImpl implements UsersDAO {
 			entitymanager.getTransaction().commit();
 
 		} catch (Exception e) {
-			String msg = "Error when inserting user. Message: " + e;
+			String msg = "Error when updating user. Message: " + e;
 			throw new DAOException(msg);
 		}
 
@@ -58,23 +58,47 @@ public class UsersDAOImpl implements UsersDAO {
 			users = entitymanager.createQuery("SELECT u FROM UsersDTO u WHERE u.username = :uname", UsersDTO.class)
 					.setParameter("uname", username).getResultList();
 		} catch (Exception e) {
-			String msg = "Error when inserting user. Message: " + e;
+			String msg = "Error when getting user. Message: " + e;
 			throw new DAOException(msg);
 		}
-		return users.size() == 0? null : users.get(0);  //return the first occurrence
+		return users.size() == 0 ? null : users.get(0); // return the first
+														// occurrence
 	}
 
-	@Override
-	public ArrayList<UsersDTO> getUsersByManager(UsersDTO user) throws DAOException {
+	public ArrayList<UsersDTO> getUsersByManagerOneLevel(UsersDTO user) throws DAOException {
 		List<UsersDTO> users = new ArrayList<>();
 		try {
 			users = entitymanager.createQuery("SELECT u FROM UsersDTO u WHERE u.managerId = :mname", UsersDTO.class)
 					.setParameter("mname", user.getUserId()).getResultList();
 		} catch (Exception e) {
-			String msg = "Error when inserting user. Message: " + e;
+			String msg = "Error when getting user. Message: " + e;
 			throw new DAOException(msg);
 		}
-		return users.size() == 0? null : new ArrayList<UsersDTO>(users);
+		return users.size() == 0 ? null : new ArrayList<UsersDTO>(users);
+	}
+
+	@Override
+	public ArrayList<UsersDTO> getUsersByManager(UsersDTO user) throws DAOException {
+		ArrayList<UsersDTO> tempList = getUsersByManagerOneLevel(user);
+		ArrayList<UsersDTO> resultList = new ArrayList<UsersDTO>();
+		while (tempList.size() != 0) { // will loop until the temp list is empty
+			UsersDTO u = tempList.get(0); // get the top one
+			ArrayList<UsersDTO> r = getUsersByManagerOneLevel(u); // get its
+																	// children
+																	// if there
+																	// are any
+
+			if (r != null) {
+				for (UsersDTO x : r) {
+					tempList.add(x); // add the children into the temp list
+				}
+			}
+
+			resultList.add(u); // add the top one into actual result list
+			tempList.remove(0); // remove the top one
+
+		}
+		return resultList.size() == 0 ? null : resultList;
 	}
 
 	@Override
@@ -87,7 +111,7 @@ public class UsersDAOImpl implements UsersDAO {
 			entitymanager.getTransaction().commit();
 
 		} catch (Exception e) {
-			String msg = "Error when inserting user. Message: " + e;
+			String msg = "Error when deleting user. Message: " + e;
 			throw new DAOException(msg);
 		}
 
@@ -98,13 +122,15 @@ public class UsersDAOImpl implements UsersDAO {
 		List<UsersDTO> users = new ArrayList<>();
 
 		try {
-			users = entitymanager.createQuery("SELECT u FROM UsersDTO u WHERE u.username = :uname AND u.password = :password", UsersDTO.class)
+			users = entitymanager
+					.createQuery("SELECT u FROM UsersDTO u WHERE u.username = :uname AND u.password = :password",
+							UsersDTO.class)
 					.setParameter("uname", username).setParameter("password", password).getResultList();
 		} catch (Exception e) {
-			String msg = "Error when inserting user. Message: " + e;
+			String msg = "Error when checking user. Message: " + e;
 			throw new DAOException(msg);
 		}
-		
+
 		boolean result = users.size() == 0 ? false : true;
 		return result;
 	}
