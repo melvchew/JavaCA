@@ -1,22 +1,25 @@
 package model;
 
-import java.sql.Timestamp;
+import java.util.Date;
+
 import javax.persistence.*;
 @Entity
 @Table(name="leave_appn")
 public class LeaveAppnDTO {
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name ="appn_id")
 	private int appnId;
 	@Column(name="leave_type_id")
 	private int leaveTypeId;
 	@Column(name="user_id")
 	private int userId;
 	@Column(name="appn_date")
-	private Timestamp appnDate;
+	private Date appnDate;
 	@Column(name="start_date")
-	private Timestamp startDate;
+	private Date startDate;
 	@Column(name="end_date")
-	private Timestamp endDate;
+	private Date endDate;
 	@Column(name="emp_comments")
 	private String empComments;
 	@Column(name="mgr_comments")
@@ -27,8 +30,8 @@ public class LeaveAppnDTO {
 		super();
 	}
 
-	public LeaveAppnDTO(int appnId, int leaveTypeId, int userId, Timestamp appnDate, Timestamp startDate,
-			Timestamp endDate, String empComments, String mgrComments, String status) {
+	public LeaveAppnDTO(int appnId, int leaveTypeId, int userId, Date appnDate, Date startDate,
+			Date endDate, String empComments, String mgrComments, String status) {
 		super();
 		this.appnId = appnId;
 		this.leaveTypeId = leaveTypeId;
@@ -57,27 +60,27 @@ public class LeaveAppnDTO {
 		this.userId = userId;
 	}
 
-	public Timestamp getAppnDate() {
+	public Date getAppnDate() {
 		return appnDate;
 	}
 
-	public void setAppnDate(Timestamp appnDate) {
+	public void setAppnDate(Date appnDate) {
 		this.appnDate = appnDate;
 	}
 
-	public Timestamp getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Timestamp startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-	public Timestamp getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(Timestamp endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 
