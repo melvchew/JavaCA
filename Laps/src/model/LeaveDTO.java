@@ -1,9 +1,21 @@
 package model;
 
-public class LeaveDTO {
 
+import javax.persistence.*;
+
+import data.LeaveID;
+
+
+@Entity @IdClass(LeaveID.class)
+@Table(name="`leave`")
+public class LeaveDTO {
+	@Id
+	@Column(name="user_id")
 	private int userId;
+	@Id
+	@Column(name="leave_type_id")
 	private int leaveTypeId;
+	@Column(name="days_remaining")
 	private double daysRemaining;
 
 	public LeaveDTO() {

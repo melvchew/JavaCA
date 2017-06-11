@@ -14,7 +14,8 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 		<class>model.LeaveAppnDTO</class>
 		<class>model.LeaveTypeDTO</class>
 		<class>model.UsersDTO</class>
-		<class>model.PositionDTO</class>
+		<class>model.LeaveDTO</class>
+		
 
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
