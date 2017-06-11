@@ -12,7 +12,7 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 		<class>model.AccessLevelDTO</class>
 		<class>model.DefaultLeaveDTO</class>
 		<class>model.UsersDTO</class>
-		<class>model.LeaveAppnDTO</class>
+		<class>model.LeaveTypeDTO</class>
 
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
