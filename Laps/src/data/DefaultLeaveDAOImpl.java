@@ -4,15 +4,18 @@ import java.util.ArrayList;
 
 import javax.persistence.*;
 
-import model.AccessLevelDTO;
 import model.DefaultLeaveDTO;
 
 public class DefaultLeaveDAOImpl implements DefaultLeaveDAO {
 
 	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("jpa-laps");
-	EntityManager entitymanager = emfactory.createEntityManager();
+	EntityManager em = emfactory.createEntityManager();
 
 	public void insertDL(DefaultLeaveDTO dl) throws DAOException {
+
+		em.getTransaction().begin();
+		em.persist(dl);
+		em.getTransaction().commit();
 
 	}
 
@@ -25,9 +28,9 @@ public class DefaultLeaveDAOImpl implements DefaultLeaveDAO {
 	}
 
 	public ArrayList<DefaultLeaveDTO> getAllDL() throws DAOException {
-		AccessLevelDTO al = entitymanager.find(AccessLevelDTO.class, );
+		// AccessLevelDTO al = entitymanager.find(AccessLevelDTO.class, );
 
-		return al;
+		return null;
 	}
 
 }
