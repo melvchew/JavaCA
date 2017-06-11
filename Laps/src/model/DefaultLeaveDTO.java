@@ -4,7 +4,8 @@ import javax.persistence.*;
 
 import data.DefaultLeaveID;
 
-@Entity @IdClass(DefaultLeaveID.class)
+@Entity
+@IdClass(DefaultLeaveID.class)
 @Table(name="default_leave")
 public class DefaultLeaveDTO {
 

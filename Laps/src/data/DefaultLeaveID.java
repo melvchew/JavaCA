@@ -5,8 +5,9 @@ import java.io.Serializable;
 public class DefaultLeaveID implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	int positionId;
-	int leaveTypeId;
+
+	private int positionId;
+	private int leaveTypeId;
 
 	public int getPositionId() {
 		return positionId;
