@@ -52,28 +52,29 @@ public class UsersDAOImpl implements UsersDAO {
 
 	@Override
 	public UsersDTO getUser(String username) throws DAOException {
-		UsersDTO user = new UsersDTO();
+		List<UsersDTO> users = new ArrayList<>();
 
 		try {
-			user = entitymanager.createQuery("SELECT u FROM TABLE users WHERE u.username = :uname", UsersDTO.class)
-					.setParameter("uname", username).getSingleResult();
+			users = entitymanager.createQuery("SELECT u FROM UsersDTO u WHERE u.username = :uname", UsersDTO.class)
+					.setParameter("uname", username).getResultList();
 		} catch (Exception e) {
 			String msg = "Error when inserting user. Message: " + e;
 			throw new DAOException(msg);
 		}
-		return user;
+		return users.size() == 0? null : users.get(0);  //return the first occurrence
 	}
 
 	@Override
 	public ArrayList<UsersDTO> getUsersByManager(UsersDTO user) throws DAOException {
 		List<UsersDTO> users = new ArrayList<>();
 		try {
-			users = entitymanager.createQuery("SELECT u FROM TABLE users WHERE u.manager_id = :mname", UsersDTO.class)
-					.setParameter("uname", user.getUserId()).getResultList();
+			users = entitymanager.createQuery("SELECT u FROM UsersDTO u WHERE u.managerId = :mname", UsersDTO.class)
+					.setParameter("mname", user.getUserId()).getResultList();
 		} catch (Exception e) {
-			// TODO: handle exception
+			String msg = "Error when inserting user. Message: " + e;
+			throw new DAOException(msg);
 		}
-		return new ArrayList<UsersDTO>(users);
+		return users.size() == 0? null : new ArrayList<UsersDTO>(users);
 	}
 
 	@Override
@@ -94,17 +95,17 @@ public class UsersDAOImpl implements UsersDAO {
 
 	@Override
 	public boolean checkUser(String username, String password) throws DAOException {
-		UsersDTO user = new UsersDTO();
+		List<UsersDTO> users = new ArrayList<>();
 
 		try {
-			user = entitymanager.createQuery("SELECT u FROM TABLE users WHERE u.username = :uname AND u.password = :password", UsersDTO.class)
-					.setParameter("uname", username).setParameter("password", password).getSingleResult();
+			users = entitymanager.createQuery("SELECT u FROM UsersDTO u WHERE u.username = :uname AND u.password = :password", UsersDTO.class)
+					.setParameter("uname", username).setParameter("password", password).getResultList();
 		} catch (Exception e) {
 			String msg = "Error when inserting user. Message: " + e;
 			throw new DAOException(msg);
 		}
 		
-		boolean result = user.getUsername().equals(null)? false : true;
+		boolean result = users.size() == 0 ? false : true;
 		return result;
 	}
 
