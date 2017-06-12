@@ -12,8 +12,7 @@ import model.UsersDTO;
 
 public class LeaveAppnDAOImpl implements LeaveAppnDAO {
 
-	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("jpa-laps");
-	EntityManager entitymanager = emfactory.createEntityManager();
+	EntityManager entitymanager = PersistenceManager.INSTANCE.getEntityManager();
 
 	public void insertLeaveAppn(LeaveAppnDTO dto) throws DAOException {
 		try {
