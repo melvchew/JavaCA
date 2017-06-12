@@ -94,4 +94,15 @@ public class LeaveAppnDAOImpl implements LeaveAppnDAO {
 		return laplist.size() == 0 ? null : new ArrayList<LeaveAppnDTO>(laplist);
 
 	}
+	
+	public LeaveAppnDTO getLeaveAppn(int leaveAppnId) throws DAOException{
+		LeaveAppnDTO leaveAppn;
+		try {
+			leaveAppn = entitymanager.find(LeaveAppnDTO.class, leaveAppnId);
+		} catch (Exception e) {
+			String msg = "Error when inserting user. Message: " + e;
+			throw new DAOException(msg);
+		}
+		return leaveAppn;
+	}
 }

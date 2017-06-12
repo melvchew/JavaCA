@@ -32,4 +32,7 @@ public class LeaveAppnManager {
 	public ArrayList<LeaveAppnDTO> getPendingLeaveAppn() throws DAOException{
 		return leaveAppnDAO.getPendingLeaveAppn();
 	}
+	public LeaveAppnDTO getLeaveAppn(int leaveAppnId) throws DAOException{
+		return leaveAppnDAO.getLeaveAppn(leaveAppnId);
+	}
 }

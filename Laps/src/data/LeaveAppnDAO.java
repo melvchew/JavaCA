@@ -13,4 +13,5 @@ public interface LeaveAppnDAO {
 	public ArrayList<LeaveAppnDTO> getAllLeaveAppn() throws DAOException;
 	public ArrayList<LeaveAppnDTO> getLeaveAppn(UsersDTO user) throws DAOException;
 	public ArrayList<LeaveAppnDTO> getPendingLeaveAppn() throws DAOException;
+	public LeaveAppnDTO getLeaveAppn(int leaveAppnId) throws DAOException;
 }

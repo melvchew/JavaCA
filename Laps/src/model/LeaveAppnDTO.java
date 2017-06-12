@@ -10,12 +10,17 @@ public class LeaveAppnDTO {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name ="appn_id")
 	private int appnId;
-	@Column(name="leave_type_id")
-//	@ManyToOne(fetch = FetchType.EAGER)
-//	@JoinColumn(name="leave_type_id")
-	private int leaveTypeId;
-	@Column(name="user_id")
-	private int userId;
+	
+	//@Column(name="leave_type_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="leave_type_id")
+	private LeaveTypeDTO leaveType;
+	
+	//@Column(name="user_id")
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="user_id")
+	private UsersDTO user;
+	
 	@Column(name="appn_date")
 	private Date appnDate;
 	@Column(name="start_date")
@@ -32,12 +37,12 @@ public class LeaveAppnDTO {
 		super();
 	}
 
-	public LeaveAppnDTO(int appnId, int leaveTypeId, int userId, Date appnDate, Date startDate,
+	public LeaveAppnDTO(int appnId, LeaveTypeDTO leaveType, UsersDTO user, Date appnDate, Date startDate,
 			Date endDate, String empComments, String mgrComments, String status) {
 		super();
 		this.appnId = appnId;
-		this.leaveTypeId = leaveTypeId;
-		this.userId = userId;
+		this.leaveType = leaveType;
+		this.user = user;
 		this.appnDate = appnDate;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -46,20 +51,20 @@ public class LeaveAppnDTO {
 		this.status = status;
 	}
 
-	public int getLeaveTypeId() {
-		return leaveTypeId;
+	public LeaveTypeDTO getLeaveType() {
+		return leaveType;
 	}
 
-	public void setLeaveTypeId(int leaveTypeId) {
-		this.leaveTypeId = leaveTypeId;
+	public void setLeaveType(LeaveTypeDTO leaveType) {
+		this.leaveType = leaveType;
 	}
 
-	public int getUserId() {
-		return userId;
+	public UsersDTO getUser() {
+		return user;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(UsersDTO user) {
+		this.user = user;
 	}
 
 	public Date getAppnDate() {

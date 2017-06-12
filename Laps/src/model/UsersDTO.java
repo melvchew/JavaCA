@@ -22,6 +22,18 @@ public class UsersDTO {
 	private int managerId;
 	@Column(name="ot_hours")
 	private double otHours;
+	
+	@OneToMany(mappedBy = "leaveType")
+	private List<LeaveAppnDTO> leaveAppns;
+	
+
+	public List<LeaveAppnDTO> getLeaveAppns() {
+		return leaveAppns;
+	}
+
+	public void setLeaveAppns(List<LeaveAppnDTO> leaveAppns) {
+		this.leaveAppns = leaveAppns;
+	}
 
 	public UsersDTO() {
 		super();

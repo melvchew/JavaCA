@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,6 +13,17 @@ public class LeaveTypeDTO {
 	private int leaveTypeId;
 	@Column(name="leave_type")
 	private String leaveType;
+	
+	@OneToMany(mappedBy = "leaveType")
+	private List<LeaveAppnDTO> leaveAppns;
+
+	public List<LeaveAppnDTO> getLeaveAppns() {
+		return leaveAppns;
+	}
+
+	public void setLeaveAppns(List<LeaveAppnDTO> leaveAppns) {
+		this.leaveAppns = leaveAppns;
+	}
 
 	public LeaveTypeDTO() {
 		super();
