@@ -23,7 +23,7 @@ public class LeaveAppnDAOImpl implements LeaveAppnDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public void updateLeaveAppn(LeaveAppnDTO dto) throws DAOException {
@@ -83,7 +83,8 @@ public class LeaveAppnDAOImpl implements LeaveAppnDAO {
 		List<LeaveAppnDTO> laplist = new ArrayList<>();
 		try {
 			laplist = entitymanager
-					.createQuery("SELECT u FROM LeaveAppnDTO u where u.status = 'PENDING'", LeaveAppnDTO.class)
+					.createQuery("SELECT u FROM LeaveAppnDTO u where u.status = 'PENDING' or u.status = 'UPDATED'",
+							LeaveAppnDTO.class)
 					.getResultList();
 
 		} catch (Exception e) {

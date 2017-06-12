@@ -11,6 +11,8 @@ public class LeaveAppnDTO {
 	@Column(name ="appn_id")
 	private int appnId;
 	@Column(name="leave_type_id")
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name="leave_type_id")
 	private int leaveTypeId;
 	@Column(name="user_id")
 	private int userId;
@@ -112,4 +114,8 @@ public class LeaveAppnDTO {
 		return appnId;
 	}
 
+	public void setAppnId(int id) {
+		this.appnId = id;
+	}
+	
 }
