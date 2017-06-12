@@ -6,20 +6,19 @@ import javax.persistence.Persistence;
 
 import model.PositionDTO;
 import model.UsersDTO;
-import model.LeaveAppnDTO;
 
-public class PositionDAOImpl implements PositionDAO{
-	
+public class PositionDAOImpl implements PositionDAO {
+
 	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("jpa-laps");
 	EntityManager entitymanager = emfactory.createEntityManager();
-	
+
 	@Override
 	public void insertPosition(PositionDTO dto) throws DAOException {
 		try {
 
-			 entitymanager.getTransaction().begin();
-			  entitymanager.persist(dto);
-			  entitymanager.getTransaction().commit();
+			entitymanager.getTransaction().begin();
+			entitymanager.persist(dto);
+			entitymanager.getTransaction().commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -30,7 +29,7 @@ public class PositionDAOImpl implements PositionDAO{
 		try {
 			PositionDTO user = entitymanager.find(PositionDTO.class, dto.getPositionId());
 			entitymanager.getTransaction().begin();
-			//user.setStatus(dto.getStatus());
+			// user.setStatus(dto.getStatus());
 			entitymanager.getTransaction().commit();
 
 		} catch (Exception e) {
@@ -44,7 +43,7 @@ public class PositionDAOImpl implements PositionDAO{
 		try {
 			PositionDTO user = entitymanager.find(PositionDTO.class, dto.getPositionId());
 			entitymanager.getTransaction().begin();
-			//user.setStatus("DELETED");
+			// user.setStatus("DELETED");
 			entitymanager.getTransaction().commit();
 
 		} catch (Exception e) {
@@ -52,7 +51,6 @@ public class PositionDAOImpl implements PositionDAO{
 			throw new DAOException(msg);
 		}
 	}
-
 
 	@Override
 	public PositionDTO getPosition(UsersDTO users) throws DAOException {
@@ -64,4 +62,3 @@ public class PositionDAOImpl implements PositionDAO{
 	}
 
 }
-	
