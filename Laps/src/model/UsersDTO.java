@@ -11,8 +11,11 @@ public class UsersDTO {
 	private int userId;
 	private String username;
 	private String password;
-	@Column(name="position_id")
-	private int positionId;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="position_id")
+	private PositionDTO position;
+	
 	private String name;
 	private Date dob;
 	private String phone;
@@ -39,13 +42,13 @@ public class UsersDTO {
 		super();
 	}
 
-	public UsersDTO(int userId, String username, String password, int positionId, String name, Date dob,
+	public UsersDTO(int userId, String username, String password, PositionDTO position, String name, Date dob,
 			String phone, String address, String email, int managerId, double otHours) {
 		super();
 		this.userId = userId;
 		this.username = username;
 		this.password = password;
-		this.positionId = positionId;
+		this.position = position;
 		this.name = name;
 		this.dob = dob;
 		this.phone = phone;
@@ -71,12 +74,12 @@ public class UsersDTO {
 		this.password = password;
 	}
 
-	public int getPositionId() {
-		return positionId;
+	public PositionDTO getPosition() {
+		return position;
 	}
 
-	public void setPositionId(int positionId) {
-		this.positionId = positionId;
+	public void setPosition(PositionDTO position) {
+		this.position = position;
 	}
 
 	public String getName() {

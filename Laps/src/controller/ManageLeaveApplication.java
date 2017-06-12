@@ -73,6 +73,8 @@ public class ManageLeaveApplication extends HttpServlet {
 			else
 				leave.setStatus("REJECTED");
 			
+			//need to add or remove remaining leaves
+			
 			lam.updateLeaveAppn(leave);
 		} catch (Exception e) {
 			System.out.println(e);

@@ -1,8 +1,14 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -12,28 +18,42 @@ public class PositionDTO {
 	@Id
 	@Column(name="position_id")
 	private int positionId;
-	@Column(name="access_level_id")
-	private int accessLevelId;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="access_level_id")
+	private AccessLevelDTO accessLevel;
+	
 	@Column(name="job_title")
 	private String jobTitle;
+	
+	@OneToMany(mappedBy="position")
+	private List<UsersDTO> users;
 
 	public PositionDTO() {
 		super();
 	}
 
-	public PositionDTO(int positionId, int accessLevelId, String jobTitle) {
+	public PositionDTO(int positionId, AccessLevelDTO accessLevel, String jobTitle) {
 		super();
 		this.positionId = positionId;
-		this.accessLevelId = accessLevelId;
+		this.accessLevel = accessLevel;
 		this.jobTitle = jobTitle;
 	}
 
-	public int getAccessLevelId() {
-		return accessLevelId;
+	public List<UsersDTO> getUsers() {
+		return users;
 	}
 
-	public void setAccessLevelId(int accessLevelId) {
-		this.accessLevelId = accessLevelId;
+	public void setUsers(List<UsersDTO> users) {
+		this.users = users;
+	}
+
+	public AccessLevelDTO getAccessLevel() {
+		return accessLevel;
+	}
+
+	public void setAccessLevel(AccessLevelDTO accessLevel) {
+		this.accessLevel = accessLevel;
 	}
 
 	public String getJobTitle() {
