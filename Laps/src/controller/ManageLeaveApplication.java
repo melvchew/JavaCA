@@ -38,7 +38,7 @@ public class ManageLeaveApplication extends HttpServlet {
 		LeaveAppnManager lam = new LeaveAppnManager();
 
 		try {
-			LeaveAppnDTO leave = lam.getLeaveAppn(4);
+			LeaveAppnDTO leave = lam.getLeaveAppn(4); //Rmb remove hardcoding
 			request.setAttribute("leave", leave);
 		} catch (DAOException e) {
 			System.out.println(e);

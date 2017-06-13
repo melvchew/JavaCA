@@ -57,7 +57,7 @@ public class PositionDAOImpl implements PositionDAO {
 		// TODO Auto-generated method stub
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("jpa-laps");
 		EntityManager entitymanager = emfactory.createEntityManager();
-		PositionDTO p = entitymanager.find(PositionDTO.class, users.getPositionId());
+		PositionDTO p = entitymanager.find(PositionDTO.class, users.getPosition());
 		return p;
 	}
 
