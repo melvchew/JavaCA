@@ -34,7 +34,7 @@ public class ManageLeaveApplication extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stubs
 		LeaveAppnManager lam = new LeaveAppnManager();
 		int key = Integer.parseInt(request.getParameter("id"));
 		try {
