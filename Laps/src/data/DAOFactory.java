@@ -10,7 +10,7 @@ public class DAOFactory {
 		return new DefaultLeaveDAOImpl();
 	}
 
-	public static HolidaysDAO getHolidays() {
+	public static HolidaysDAO getHolidaysDAOInstance() {
 		return new HolidaysDAOImpl();
 	}
 

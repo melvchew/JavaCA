@@ -1,5 +1,6 @@
 package service;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import data.DAOFactory;
@@ -8,10 +9,10 @@ import model.HolidaysDTO;
 
 public class HolidayManager {
 
-	private HolidaysDAO holidaysDAO;
+private HolidaysDAO holidaysDAO;
 	
 	public HolidayManager(){
-		holidaysDAO = DAOFactory.getHolidays();
+		holidaysDAO = DAOFactory.getHolidaysDAOInstance();
 	}
 	
 	public void insertHoliday(HolidaysDTO dto) throws Exception{
@@ -26,4 +27,10 @@ public class HolidayManager {
 	public ArrayList<HolidaysDTO> getAllHolidays() throws Exception{
 		return holidaysDAO.getAllHolidays();
 	}
+	
+	public HolidaysDTO findHolidayBydate(Timestamp date) throws Exception{
+		
+		return holidaysDAO.findHolidayBydate(date);
+	}
+	
 }

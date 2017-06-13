@@ -15,7 +15,7 @@
 <c:if test="${ param['insert'] == 'Insert' }">
 	<p>The holiday is updated!</p>
 </c:if>
-<form action="servlet3" method="post">
+<form action="AdminInsertHolidays" method="post">
 
 <table border="1">
 
@@ -37,7 +37,7 @@
 </table>
 
 </form>
-<a href="servlet">Check</a>
+<a href="AdminViewAllAndDeleteHolidays">Check</a>
 </center>
 </body>
 </html>

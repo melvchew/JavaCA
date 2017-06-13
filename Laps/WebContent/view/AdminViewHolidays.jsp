@@ -31,9 +31,9 @@
 				<td>${holidays.description}</td>
 				
 				<td>  
-			    <a href="servlet4?date=${holidays.date}">Update</a>
-				<a href="servlet3?date=${holidays.date}">Insert</a>
-                <a href="servlet?date=${holidays.date}">Delete</a>      
+			    <a href="AdminUpdateHolidays?date=${holidays.date}">Update</a>
+				<a href="AdminInsertHolidays?date=${holidays.date}">Insert</a>
+                <a href="AdminViewAllAndDeleteHolidays?date=${holidays.date}">Delete</a>      
 				</td>
 			</tr>
 			

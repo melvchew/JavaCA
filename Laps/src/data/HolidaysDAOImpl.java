@@ -1,5 +1,6 @@
 package data;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.persistence.EntityManager;
@@ -9,7 +10,7 @@ import data.PersistenceManager;
 
 public class HolidaysDAOImpl implements HolidaysDAO {
 	
-	EntityManager entitymanager = PersistenceManager.INSTANCE.getEntityManager();
+EntityManager entitymanager = PersistenceManager.INSTANCE.getEntityManager();
 	
 	@Override
 	public void insertHoliday(HolidaysDTO dto) throws Exception{
@@ -17,8 +18,8 @@ public class HolidaysDAOImpl implements HolidaysDAO {
 		entitymanager.getTransaction().begin();
 		entitymanager.persist(dto);
 		entitymanager.getTransaction().commit();
-		entitymanager.close();
-		PersistenceManager.INSTANCE.close();
+		//entitymanager.close();
+		//PersistenceManager.INSTANCE.close();
 	} catch(Exception e){
 		
 		System.out.println(e);
@@ -29,10 +30,11 @@ public class HolidaysDAOImpl implements HolidaysDAO {
 	public void updateHoliday(HolidaysDTO dto) throws Exception{
 		try{
 			entitymanager.getTransaction().begin();
-			entitymanager.find(HolidaysDTO.class, dto.getDate());
+			HolidaysDTO holidaysDTO =entitymanager.find(HolidaysDTO.class, dto.getDate());
+			holidaysDTO.setDescription(dto.getDescription());
 			entitymanager.getTransaction().commit();
-			entitymanager.close();
-			PersistenceManager.INSTANCE.close();
+			//entitymanager.close();
+			//PersistenceManager.INSTANCE.close();
 			
 		} catch(Exception e){
 			System.out.println(e);
@@ -46,10 +48,10 @@ public class HolidaysDAOImpl implements HolidaysDAO {
 		
 		try{
 			entitymanager.getTransaction().begin();
-			entitymanager.remove(dto);
+			entitymanager.remove(entitymanager.getReference(HolidaysDTO.class,dto.getDate()));
 			entitymanager.getTransaction().commit();
-			entitymanager.close();
-			PersistenceManager.INSTANCE.close();
+			//entitymanager.close();
+			//PersistenceManager.INSTANCE.close();
 			
 		} catch(Exception e){
 			System.out.println(e);
@@ -66,17 +68,33 @@ public class HolidaysDAOImpl implements HolidaysDAO {
 			
 			 list = (ArrayList<HolidaysDTO>)query.getResultList();
 	
-				entitymanager.close();
+				//entitymanager.close();
 				
-				PersistenceManager.INSTANCE.close();
-		
-		
+				//PersistenceManager.INSTANCE.close();
 		
 		}catch (Exception e)
 		{
 			System.out.println(e);
 		}
 		return list;
+		
+	}
+
+	public HolidaysDTO findHolidayBydate(Timestamp date)	throws Exception{
+		
+		HolidaysDTO holidaysDTO=null;
+		try{
+			//entitymanager.getTransaction().begin();
+			
+		 holidaysDTO =entitymanager.find(HolidaysDTO.class, date);
+		 //entitymanager.close();
+			
+		}catch (Exception e){
+			
+			System.out.println(e);
+		}
+		
+		return holidaysDTO;
 		
 	}
 }
