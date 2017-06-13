@@ -68,7 +68,7 @@ public class LeaveAppnDAOImpl implements LeaveAppnDAO {
 		List<LeaveAppnDTO> laplist = new ArrayList<>();
 		try {
 			laplist = entitymanager
-					.createQuery("SELECT u FROM LeaveAppnDTO u WHERE u.userId = :uname", LeaveAppnDTO.class)
+					.createQuery("SELECT u FROM LeaveAppnDTO u WHERE u.user.userId = :uname", LeaveAppnDTO.class)
 					.setParameter("uname", user.getUserId()).getResultList();
 
 		} catch (Exception e) {

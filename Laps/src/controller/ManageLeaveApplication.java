@@ -36,9 +36,9 @@ public class ManageLeaveApplication extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		LeaveAppnManager lam = new LeaveAppnManager();
-
+		int key = Integer.parseInt(request.getParameter("id"));
 		try {
-			LeaveAppnDTO leave = lam.getLeaveAppn(4); //Rmb remove hardcoding
+			LeaveAppnDTO leave = lam.getLeaveAppn(key);
 			request.setAttribute("leave", leave);
 		} catch (DAOException e) {
 			System.out.println(e);
