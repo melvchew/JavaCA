@@ -16,13 +16,13 @@ public class DefaultLeaveDTO {
 	@Column(name="leave_type_id")
 	private int leaveTypeId;
 	@Column(name="days")
-	private double days;
+	private int days;
 
 	public DefaultLeaveDTO() {
 		super();
 	}
 
-	public DefaultLeaveDTO(int positionId, int leaveTypeId, double days) {
+	public DefaultLeaveDTO(int positionId, int leaveTypeId, int days) {
 		super();
 		this.positionId = positionId;
 		this.leaveTypeId = leaveTypeId;
@@ -45,11 +45,11 @@ public class DefaultLeaveDTO {
 		this.leaveTypeId = leaveTypeId;
 	}
 
-	public double getDays() {
+	public int getDays() {
 		return days;
 	}
 
-	public void setDays(double days) {
+	public void setDays(int days) {
 		this.days = days;
 	}
 

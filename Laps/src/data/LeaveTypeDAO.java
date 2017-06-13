@@ -6,4 +6,5 @@ public interface LeaveTypeDAO {
 
 	public LeaveTypeDTO getLeaveType(int LeaveTypeId) throws DAOException;
 
+
 }
