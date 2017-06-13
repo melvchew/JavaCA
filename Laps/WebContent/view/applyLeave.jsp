@@ -34,7 +34,7 @@
 					<table>
 						<tr>
 							<td>From :</td>
-							<td><input type="text" name="StartDate "></td>
+							<td><input type="text" name="StartDate"></td>
 						</tr>
 						<tr>
 							<td>To :</td>
