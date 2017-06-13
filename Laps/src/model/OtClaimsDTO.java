@@ -2,11 +2,24 @@ package model;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="ot_claims")
 public class OtClaimsDTO {
+	@Id
+	@Column(name="claim_id")
 	private int claimId;
+	@Column(name="user_id")
 	private int userId;
+	@Column(name="claim_date")
 	private Timestamp claimDate;
+	@Column(name="emp_comments")
 	private String empComments;
+	@Column(name="mgr_comments")
 	private String mgrComments;
 	private String status;
 
