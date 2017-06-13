@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import model.HolidaysDTO;
 import data.PersistenceManager;
-
+//some comm
 public class HolidaysDAOImpl implements HolidaysDAO {
 	
 EntityManager entitymanager = PersistenceManager.INSTANCE.getEntityManager();
