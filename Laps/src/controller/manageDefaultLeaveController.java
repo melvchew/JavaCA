@@ -69,7 +69,7 @@ public class manageDefaultLeaveController extends HttpServlet {
 				DefaultLeaveDTO ldto = new DefaultLeaveDTO();
 				ldto = dlList.get(i);
 				String id = Integer.toString(ldto.getLeaveTypeId()) + Integer.toString(ldto.getPositionId());
-				ldto.setDays(Integer.parseInt(request.getParameter(id)));
+				ldto.setDays(Double.parseDouble(request.getParameter(id)));
 				dlm.updateDL(ldto);
 				/*
 				 * System.out.println(id); System.out.println(request.getParameter(id));
