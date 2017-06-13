@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import data.DAOException;
 import model.DefaultLeaveDTO;
-import model.LeaveTypeDTO;
 import service.DefaultLeaveManager;
 
 

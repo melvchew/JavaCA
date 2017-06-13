@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Manage Default Leave</title>
 
+
+
 <style>
 table {
 	border-collapse: collapse;
