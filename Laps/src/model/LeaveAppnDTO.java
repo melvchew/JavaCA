@@ -21,12 +21,18 @@ public class LeaveAppnDTO {
 	@JoinColumn(name="user_id")
 	private UsersDTO user;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="appn_date")
 	private Date appnDate;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="start_date")
 	private Date startDate;
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name="end_date")
 	private Date endDate;
+	
 	@Column(name="emp_comments")
 	private String empComments;
 	@Column(name="mgr_comments")

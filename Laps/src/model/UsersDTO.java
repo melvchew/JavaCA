@@ -17,6 +17,7 @@ public class UsersDTO {
 	private PositionDTO position;
 	
 	private String name;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dob;
 	private String phone;
 	private String address;
