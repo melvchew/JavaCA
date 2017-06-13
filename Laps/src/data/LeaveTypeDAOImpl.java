@@ -18,6 +18,7 @@ public class LeaveTypeDAOImpl implements LeaveTypeDAO {
 
 	}
 
+<<<<<<< HEAD
 	public ArrayList<LeaveTypeDTO> getAllLeaveTypes() throws DAOException {
 		List<LeaveTypeDTO> lt = em.createQuery("SELECT u FROM LeaveTypeDTO u", LeaveTypeDTO.class).getResultList();
 		return lt.size() == 0 ? null : (ArrayList<LeaveTypeDTO>) lt;
@@ -36,5 +37,8 @@ public class LeaveTypeDAOImpl implements LeaveTypeDAO {
 		em.getTransaction().commit();
 
 	}
+=======
+
+>>>>>>> branch 'master' of https://github.com/melvchew/JavaCA.git
 
 }

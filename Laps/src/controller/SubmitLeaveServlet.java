@@ -2,8 +2,9 @@ package controller;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import java.util.*;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,9 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import data.DAOException;
 import data.UsersDAO;
 import data.UsersDAOImpl;
 import model.LeaveAppnDTO;
@@ -22,19 +21,18 @@ import model.UsersDTO;
 import service.DateManager;
 import service.LeaveAppnManager;
 import service.LeaveTypeManager;
-import service.UserManager;
 
 /**
- * Servlet implementation class SubmitLeaveController
+ * Servlet implementation class SubmitLeaveServlet
  */
-@WebServlet("/SubmitLeaveController")
-public class SubmitLeaveApplication extends HttpServlet {
+@WebServlet("/SubmitLeaveServlet")
+public class SubmitLeaveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public SubmitLeaveApplication() {
+	public SubmitLeaveServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -46,8 +44,6 @@ public class SubmitLeaveApplication extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// to get staff id from session
-
 		RequestDispatcher rd = request.getRequestDispatcher("/view/applyLeave.jsp");
 		rd.forward(request, response);
 	}
@@ -61,41 +57,36 @@ public class SubmitLeaveApplication extends HttpServlet {
 		// TODO Auto-generated method stub
 		String message = "Success";
 		try {
+		
+			DateManager dm = new DateManager();
 			UsersDAO userdao = new UsersDAOImpl();
 			UsersDTO user = userdao.getUser("pete");
-//			HttpSession session = request.getSession();
-//			session.setAttribute("user", user);
 			LeaveTypeManager ltm = new LeaveTypeManager();
-			DateManager dm = new DateManager();
-			
 			LeaveTypeDTO lt = ltm.getLeaveType(1);
-			LeaveAppnDTO la = new LeaveAppnDTO();
-//			la.setStatus("PENDING");
-//			la.setEndDate(dm.createDate(request.getParameter("EndDate")));
-//			la.setAppnDate(new Date());
-//			la.setStartDate(dm.createDate(request.getParameter("StartDate")));
-//			la.setLeaveType(lt);
-//			la.setUser(user);
-			la.setAppnDate(new Date());
-			la.setStartDate(dm.createDate("6/14/2017"));
-			la.setEndDate(dm.createDate("6/15/2017"));
-			la.setLeaveType(lt);
-			la.setUser(user);
-			la.setStatus("PENDING");
+			LeaveAppnDTO dto = new LeaveAppnDTO();
+			dto.setStartDate(dm.createDate(request.getParameter("StartDate")));
+			dto.setEndDate(dm.createDate(request.getParameter("EndDate")));
+			
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+			LocalDate localDate = LocalDate.now();
+			dto.setAppnDate(dm.createDate(dtf.format(localDate)));
+			
+			dto.setLeaveType(lt);
+			dto.setUser(user);
+			dto.setEmpComments(request.getParameter("reasons"));
+			dto.setStatus("PENDING");
 			LeaveAppnManager lam = new LeaveAppnManager();
-			
-			//TODO: ADD VALIDATION
-			
-			lam.insertLeaveAppn(la);
-			
-			message = "Success. Ez Peazy.";
+			lam.insertLeaveAppn(dto);
+
+			// TODO: ADD VALIDATION
+
+			lam.insertLeaveAppn(dto);
+			message = "Leave has been applied successfully!";
 			request.setAttribute("msg", message);
 
 		} catch (Exception e) {
-			System.out.println(e);
 			// TODO: handle exception
 		}
 		doGet(request, response);
 	}
-
 }

@@ -10,4 +10,5 @@ public interface LeaveTypeDAO {
 	public void insertLeaveType(LeaveTypeDTO lt) throws DAOException;
 	public void updateLeaveType(LeaveTypeDTO lt) throws DAOException;
 
+
 }

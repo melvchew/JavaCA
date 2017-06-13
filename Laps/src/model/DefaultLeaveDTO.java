@@ -22,7 +22,7 @@ public class DefaultLeaveDTO {
 		super();
 	}
 
-	public DefaultLeaveDTO(int positionId, int leaveTypeId, double days) {
+	public DefaultLeaveDTO(int positionId, int leaveTypeId, int days) {
 		super();
 		this.positionId = positionId;
 		this.leaveTypeId = leaveTypeId;

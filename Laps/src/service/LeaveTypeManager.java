@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import data.DAOException;
 import data.DAOFactory;
 import data.LeaveTypeDAO;
+import model.DefaultLeaveDTO;
 import model.LeaveTypeDTO;
 
 public class LeaveTypeManager {
@@ -26,5 +27,5 @@ public class LeaveTypeManager {
 	public void updateLeavetype(LeaveTypeDTO lt) throws DAOException{
 		leaveTypeDAO.updateLeaveType(lt);
 	}
-	
+
 }

@@ -34,4 +34,7 @@ private HolidaysDAO holidaysDAO;
 		return holidaysDAO.findHolidayBydate(date);
 	}
 	
+	public boolean isHoliday(Date date) throws Exception{
+		return holidaysDAO.isHoliday(date);
+	}
 }
