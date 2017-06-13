@@ -135,5 +135,21 @@ public class UsersDAOImpl implements UsersDAO {
 		boolean result = users.size() == 0 ? false : true;
 		return result;
 	}
+	
+	@Override
+	//Cornelia add on 6-13
+	public ArrayList<UsersDTO> getAllUsers() throws DAOException {
+		// TODO Auto-generated method stub
+		List<UsersDTO> users = new ArrayList<>();
+		try {
+			users = entitymanager.createQuery("SELECT u FROM UsersDTO u", UsersDTO.class).getResultList();
+					
+		} catch (Exception e) {
+			String msg = "Error when get all users. Message: " + e;
+			throw new DAOException(msg);
+		}
+		return users.size() == 0? null : new ArrayList<UsersDTO>(users);
+	}
 
 }
+

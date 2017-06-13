@@ -20,6 +20,10 @@ public class UserManager {
 	public void updateUser(UsersDTO DTO) throws DAOException{
 		usersDAO.updateUser(DTO);
 	}
+	//Cornelia add!!!!!
+	public ArrayList<UsersDTO> getAllUser() throws DAOException{
+		return usersDAO.getAllUsers();
+	}
 	public UsersDTO getUser(String username) throws DAOException{
 		return usersDAO.getUser(username);
 	}

@@ -1,6 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import javax.servlet.RequestDispatcher;
@@ -54,33 +57,23 @@ public class SubmitLeaveServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String message = "Success";
 		try {
-			// UsersDAO userdao = new UsersDAOImpl();
-			// UsersDTO user = userdao.getUser("pete");
-			// HttpSession session = request.getSession();
-			// session.setAttribute("user", user);
-			// LeaveTypeManager ltm = new LeaveTypeManager();
-			// DateManager dm = new DateManager();
-			//
-			// LeaveTypeDTO lt = ltm.getLeaveType(1);
-			// LeaveAppnDTO la = new LeaveAppnDTO();
-			// la.setStatus("PENDING");
-			// la.setEndDate(dm.createDate(request.getParameter("EndDate")));
-			// la.setAppnDate(new Date());
-			// la.setStartDate(dm.createDate(request.getParameter("StartDate")));
-			// la.setLeaveType(lt);
-			// la.setUser(user);
+		
 			DateManager dm = new DateManager();
 			UsersDAO userdao = new UsersDAOImpl();
 			UsersDTO user = userdao.getUser("pete");
 			LeaveTypeManager ltm = new LeaveTypeManager();
 			LeaveTypeDTO lt = ltm.getLeaveType(1);
 			LeaveAppnDTO dto = new LeaveAppnDTO();
-
-			dto.setStartDate(dm.createDate("6/14/2017"));
-			dto.setEndDate(dm.createDate("6/15/2017"));
-			dto.setAppnDate(new Date());
+			dto.setStartDate(dm.createDate(request.getParameter("StartDate")));
+			dto.setEndDate(dm.createDate(request.getParameter("EndDate")));
+			
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+			LocalDate localDate = LocalDate.now();
+			dto.setAppnDate(dm.createDate(dtf.format(localDate)));
+			
 			dto.setLeaveType(lt);
 			dto.setUser(user);
+			dto.setEmpComments(request.getParameter("reasons"));
 			dto.setStatus("PENDING");
 			LeaveAppnManager lam = new LeaveAppnManager();
 			lam.insertLeaveAppn(dto);
@@ -88,7 +81,7 @@ public class SubmitLeaveServlet extends HttpServlet {
 			// TODO: ADD VALIDATION
 
 			lam.insertLeaveAppn(dto);
-			message = "Success. Ez Peazy.";
+			message = "Leave has been applied successfully!";
 			request.setAttribute("msg", message);
 
 		} catch (Exception e) {
