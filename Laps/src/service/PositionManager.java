@@ -25,4 +25,7 @@ public class PositionManager {
 	public PositionDTO getPosition(UsersDTO users) throws DAOException{
 		return positionDAO.getPosition(users);
 	}
+	public PositionDTO getPosition(int positionId) throws DAOException{
+		return positionDAO.getPosition(positionId);
+	}
 }
