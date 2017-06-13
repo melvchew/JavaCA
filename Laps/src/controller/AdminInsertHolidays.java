@@ -32,7 +32,7 @@ public class AdminInsertHolidays extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       RequestDispatcher rd = request.getRequestDispatcher("AdminIncertHolidays.jsp");
+       RequestDispatcher rd = request.getRequestDispatcher("/view/AdminInsertHolidays.jsp");
 		
 		rd.forward(request, response);
 	}

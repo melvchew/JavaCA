@@ -12,7 +12,7 @@
 <center>
 <font color="#57C9F4" size=10>Insert Holidays</font>
 <hr>
-<c:if test="${ param['insert'] == 'Insert' }">
+<c:if test="${ param['Insert'] == 'Insert' }">
 	<p>The holiday is updated!</p>
 </c:if>
 <form action="AdminInsertHolidays" method="post">

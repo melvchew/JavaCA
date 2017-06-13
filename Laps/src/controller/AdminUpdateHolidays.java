@@ -33,7 +33,7 @@ public class AdminUpdateHolidays extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
        
-		RequestDispatcher rd = request.getRequestDispatcher("AdminUpdateHolidays.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/view/AdminUpdateHolidays.jsp");
 		
 		rd.forward(request, response);
 	}
