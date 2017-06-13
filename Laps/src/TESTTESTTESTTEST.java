@@ -4,15 +4,15 @@ import java.util.ArrayList;
 
 import data.*;
 import model.LeaveAppnDTO;
-import service.LeaveAppnManager1;
+import service.LeaveAppnManager;
 
 public class TESTTESTTESTTEST {
 
 	public static void main(String[] args) {
 
-		LeaveAppnManager1 lam = new LeaveAppnManager1();
+		LeaveAppnManager lam = new LeaveAppnManager();
 		try {
-			ArrayList<LeaveAppnDTO> al = lam.getAllLeaveForApproval();
+			ArrayList<LeaveAppnDTO> al = lam.getPendingLeaveAppn();
 			for (LeaveAppnDTO i : al) {
 				System.out.println(i.getStartDate().toString());
 				System.out.println("\n");
