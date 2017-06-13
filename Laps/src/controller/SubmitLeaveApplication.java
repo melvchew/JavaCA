@@ -46,30 +46,8 @@ public class SubmitLeaveApplication extends HttpServlet {
 		// TODO Auto-generated method stub
 		// to get staff id from session
 
-		try {
-			UsersDAO userdao = new UsersDAOImpl();
-			UsersDTO user = userdao.getUser("pete");
-			LeaveTypeManager ltm = new LeaveTypeManager();
-			LeaveTypeDTO lt = ltm.getLeaveType(Integer.parseInt(request.getParameter("leaveType")));
-			Date startDate = new Date(request.getParameter("StartDate")); // Date.
-			Date endDate = new Date(request.getParameter("EndDate"));
-			Date appndate = new Date();
-			LeaveAppnDTO la = new LeaveAppnDTO(1, lt, user, appndate, startDate, endDate,"", "","PENDING");
-			LeaveAppnManager lam = new LeaveAppnManager();
-			lam.insertLeaveAppn(la);
-			HttpSession session = request.getSession();
-			session.setAttribute("user", user);
-
-			// user = (UsersDTO) session.getAttribute("user");
-
-			RequestDispatcher rd = request.getRequestDispatcher("/view/applyLeave.jsp");
-			rd.forward(request, response);
-
-		} catch (DAOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println(e);
-		}
+		RequestDispatcher rd = request.getRequestDispatcher("/view/applyLeave.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -79,7 +57,37 @@ public class SubmitLeaveApplication extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		String message = "Success";
+		try {
+			UsersDAO userdao = new UsersDAOImpl();
+			UsersDTO user = userdao.getUser("pete");
+			LeaveTypeManager ltm = new LeaveTypeManager();
+			// String leavetypeString = request.getParameter("leavetype");
+			// int leavetypeID = Integer.parseInt(leavetypeString);
+			// LeaveTypeDTO lt = ltm.getLeaveType(leavetypeID);
+			//TODO: ADD VALIDATION
+			LeaveTypeDTO lt = ltm.getLeaveType(Integer.parseInt(request.getParameter("leavetype")));
+			Date startdate = new Date(); // Date.
+			Date enddate = new Date();
+			Date appndate = new Date();
+			
+			LeaveAppnDTO la = new LeaveAppnDTO();
+			la.setStatus("PENDING");
+			la.setEndDate(enddate);
+			la.setAppnDate(appndate);
+			la.setStartDate(startdate);
+			la.setLeaveType(lt);
+			la.setUser(user);
+			LeaveAppnManager lam = new LeaveAppnManager();
+			lam.insertLeaveAppn(la);
+			
+			message = "Success. Ez Peazy.";
+			request.setAttribute("msg", message);
+			HttpSession session = request.getSession();
+			session.setAttribute("user", user);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		doGet(request, response);
 	}
 
