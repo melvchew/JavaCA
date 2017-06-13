@@ -61,4 +61,11 @@ public class PositionDAOImpl implements PositionDAO {
 		return p;
 	}
 
+	@Override
+	public PositionDTO getPosition(int positionId) throws DAOException {
+		// TODO Auto-generated method stub
+		PositionDTO p = entitymanager.find(PositionDTO.class, positionId);
+		return p;
+	}
+
 }
