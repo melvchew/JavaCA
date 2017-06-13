@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import data.UsersDAO;
 import data.UsersDAOImpl;
 import model.LeaveAppnDTO;
+import model.LeaveDTO;
 import model.LeaveTypeDTO;
 import model.UsersDTO;
 import service.DateManager;
@@ -57,32 +58,45 @@ public class SubmitLeaveServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String message = "Success";
 		try {
-		
+			LeaveAppnManager lam = new LeaveAppnManager();
 			DateManager dm = new DateManager();
 			UsersDAO userdao = new UsersDAOImpl();
 			UsersDTO user = userdao.getUser("pete");
 			LeaveTypeManager ltm = new LeaveTypeManager();
-			LeaveTypeDTO lt = ltm.getLeaveType(1);
+			LeaveTypeDTO lt = ltm.getLeaveType(Integer.parseInt(request.getParameter("leavetype")));
 			LeaveAppnDTO dto = new LeaveAppnDTO();
 			dto.setStartDate(dm.createDate(request.getParameter("StartDate")));
 			dto.setEndDate(dm.createDate(request.getParameter("EndDate")));
-			
+
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy");
 			LocalDate localDate = LocalDate.now();
 			dto.setAppnDate(dm.createDate(dtf.format(localDate)));
-			
+
 			dto.setLeaveType(lt);
 			dto.setUser(user);
 			dto.setEmpComments(request.getParameter("reasons"));
 			dto.setStatus("PENDING");
-			LeaveAppnManager lam = new LeaveAppnManager();
-			lam.insertLeaveAppn(dto);
-
-			// TODO: ADD VALIDATION
-
-			lam.insertLeaveAppn(dto);
-			message = "Leave has been applied successfully!";
+			//check if the user has enough leaves left
+			LeaveDTO axe = new LeaveDTO();
+			axe.setLeaveTypeId(Integer.parseInt(request.getParameter("leavetype")));
+			axe.setUserId(user.getUserId());
+			double daysLeft = axe.getDaysRemaining();
+			double daysApplied = (double) lam.getNumberOfLeaveDays(dto.getStartDate(), dto.getEndDate());
+			if(((daysLeft - daysApplied) >= 0) && (daysApplied==-1)){
+				message = "End Date has to be earlier than Start Date";
+			}
+			else if(daysLeft -daysApplied <0){
+				message = "Insufficient Leave left";
+			}else if(((daysLeft - daysApplied) >= 0) && (daysApplied !=1)) {
+				lam.insertLeaveAppn(dto);
+				message = "Leave has been applied successfully!";
+			}
+			
 			request.setAttribute("msg", message);
+			
+			//check if EndDate>StartDate
+			
+
 
 		} catch (Exception e) {
 			// TODO: handle exception

@@ -56,9 +56,9 @@ public class LeaveDAOImpl implements LeaveDAO {
 				.setParameter("u", user.getUserId()).getResultList();
 		
 		return leaveList.size() == 0 ? null : new ArrayList<>(leaveList);
-
-		
 	}
+	
+
 	
 	
 	
