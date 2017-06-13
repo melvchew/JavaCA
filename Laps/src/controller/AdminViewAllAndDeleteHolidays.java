@@ -65,7 +65,7 @@ public class AdminViewAllAndDeleteHolidays extends HttpServlet {
 
 		request.setAttribute("slist", result);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("AdminViewHolidays.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/view/AdminViewHolidays.jsp");
 
 		rd.forward(request, response);
 	

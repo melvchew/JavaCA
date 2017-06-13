@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import model.HolidaysDTO;
 import data.PersistenceManager;
-
+//some comm
 public class HolidaysDAOImpl implements HolidaysDAO {
 	
 EntityManager entitymanager = PersistenceManager.INSTANCE.getEntityManager();
@@ -96,5 +96,14 @@ EntityManager entitymanager = PersistenceManager.INSTANCE.getEntityManager();
 		
 		return holidaysDTO;
 		
+	}
+
+	public boolean isHoliday(Date date) throws Exception {
+		boolean isHoliday = false;
+		HolidaysDTO day = entitymanager.find(HolidaysDTO.class, date);
+		if(day != null){
+			isHoliday = true;
+		}
+		return isHoliday;
 	}
 }

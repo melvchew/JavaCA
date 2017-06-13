@@ -2,6 +2,7 @@ package service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 import data.DAOFactory;
 import data.HolidaysDAO;
@@ -33,4 +34,7 @@ private HolidaysDAO holidaysDAO;
 		return holidaysDAO.findHolidayBydate(date);
 	}
 	
+	public boolean isHoliday(Date date) throws Exception{
+		return holidaysDAO.isHoliday(date);
+	}
 }

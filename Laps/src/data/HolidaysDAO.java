@@ -1,6 +1,6 @@
 package data;
 
-import java.sql.Date;
+import java.util.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -17,4 +17,6 @@ public interface HolidaysDAO {
 	public ArrayList<HolidaysDTO> getAllHolidays() throws Exception; 
 	
 	public HolidaysDTO findHolidayBydate(Timestamp date) throws Exception;
+	
+	public boolean isHoliday(Date date) throws Exception;
 }
