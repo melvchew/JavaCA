@@ -83,7 +83,7 @@ input[type=text] {
 				<tr>
 					<td><c:out value="${dl.positionId }"/></td>
 					<td>${dl.leaveTypeId }</td>
-					<td><input required type="number" name="${dl.leaveTypeId }${dl.positionId }"  value="${dl.days}"></td>
+					<td><input required type="number" step="0.5" name="${dl.leaveTypeId }${dl.positionId }"  value="${dl.days}"></td>
 				</tr>
 			</c:forEach>
 
