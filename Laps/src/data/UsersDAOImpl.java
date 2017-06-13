@@ -34,7 +34,7 @@ public class UsersDAOImpl implements UsersDAO {
 			entitymanager.getTransaction().begin();
 			user.setUsername(DTO.getUsername());
 			user.setPassword(DTO.getPassword());
-			user.setPositionId(DTO.getPositionId());
+			user.setPosition(DTO.getPosition());
 			user.setName(DTO.getName());
 			user.setDob(DTO.getDob());
 			user.setPhone(DTO.getPhone());
