@@ -1,18 +1,21 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 @Entity
 @Table(name="holidays")
-public class HolidaysDTO {
-	
+public class HolidaysDTO implements Serializable {
+
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 @Id
-@Temporal(TemporalType.TIMESTAMP)
 	private Date date; 
 @Column
 	private String description;
