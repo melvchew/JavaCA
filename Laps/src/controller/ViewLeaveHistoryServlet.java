@@ -20,6 +20,7 @@ import data.UsersDAOImpl;
 import model.LeaveAppnDTO;
 import model.UsersDTO;
 import service.LeaveAppnManager;
+import service.UserManager;
 
 /**
  * Servlet implementation class vewLeaveHistory
@@ -43,14 +44,20 @@ public class ViewLeaveHistoryServlet extends HttpServlet {
 		
 
 		try {
+			//gets UserDTO from request.getParameter();
+			UserManager um = new UserManager();
+			UsersDTO user = um.getUser(request.getParameter("username"));
 			
-			UsersDAO userdao = new UsersDAOImpl();						//to be deleted
-			UsersDTO user = userdao.getUser("pete"); 					//to be deleted
 			
-			//gets UserDTO from request
-			HttpSession session = request.getSession();					//instantiates a session object
-			session.setAttribute("user", user); 
-			user = (UsersDTO) session.getAttribute("user"); 			//gets the UsersDTO from the session
+			//gets UserDTO from request.session
+//			HttpSession session = request.getSession();					//instantiates a session object
+//			session.setAttribute("user", user); 
+//			user = (UsersDTO) session.getAttribute("user"); 			//gets the UsersDTO from the session
+			
+			
+			
+//			UsersDAO userdao = new UsersDAOImpl();						//hardcoded
+//			UsersDTO user = userdao.getUser("pete"); 					//hardcoded
 			
 			LeaveAppnManager lam = new LeaveAppnManager(); 				//obtains the service Manager
 			ArrayList<LeaveAppnDTO> leaveList = lam.getLeaveAppn(user); //uses service Manager to extract data from database

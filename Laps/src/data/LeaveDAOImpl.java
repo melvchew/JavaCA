@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 
 import model.DefaultLeaveDTO;
 import model.LeaveDTO;
+import model.LeaveTypeDTO;
 import model.UsersDTO;
 
 public class LeaveDAOImpl implements LeaveDAO {
@@ -56,6 +57,14 @@ public class LeaveDAOImpl implements LeaveDAO {
 				.setParameter("u", user.getUserId()).getResultList();
 		
 		return leaveList.size() == 0 ? null : new ArrayList<>(leaveList);
+	}
+	@Override
+	public LeaveDTO getLeaveByUser(UsersDTO user, LeaveTypeDTO leave) throws Exception {
+		LeaveID leaveid = new LeaveID();
+		leaveid.setLeaveTypeId(leave.getLeaveTypeId());
+		leaveid.setUserId(user.getUserId());
+		LeaveDTO dto = entitymanager.find(LeaveDTO.class, leaveid); 
+		return dto;
 	}
 	
 

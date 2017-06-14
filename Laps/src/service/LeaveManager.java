@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import data.DAOFactory;
 import data.LeaveDAO;
 import model.LeaveDTO;
+import model.LeaveTypeDTO;
 import model.UsersDTO;
 
 public class LeaveManager {
@@ -26,5 +27,9 @@ public class LeaveManager {
 	}
 	public ArrayList<LeaveDTO> getLeave(UsersDTO user) throws Exception{
 		return leaveDAO.getLeave(user);
+	}
+	
+	public LeaveDTO getLeaveByUser(UsersDTO user, LeaveTypeDTO leave) throws Exception{
+		return leaveDAO.getLeaveByUser(user,leave);
 	}
 }
