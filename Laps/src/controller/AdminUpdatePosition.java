@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import data.DAOException;
 import model.AccessLevelDTO;
 import model.HolidaysDTO;
 import model.PositionDTO;
@@ -36,7 +38,20 @@ public class AdminUpdatePosition extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    RequestDispatcher rd = request.getRequestDispatcher("/view/AdminUpdatePosition.jsp");
+		
+		
+		AccessLevelManager aManager = new AccessLevelManager();
+		
+		try {
+			ArrayList<AccessLevelDTO> accessList = aManager.getAllAccessLevel();
+			request.setAttribute("accessList", accessList);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		RequestDispatcher rd = request.getRequestDispatcher("/view/AdminUpdatePosition.jsp");
 		
 		rd.forward(request, response);
 	}

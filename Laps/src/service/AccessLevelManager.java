@@ -2,6 +2,9 @@ package service;
 
 import data.DAOFactory;
 import model.AccessLevelDTO;
+
+import java.util.ArrayList;
+
 import data.AccessLevelDAO;
 import data.DAOException;
 
@@ -23,5 +26,8 @@ public class AccessLevelManager {
 		return null;
 	}
 	
+	public ArrayList<AccessLevelDTO> getAllAccessLevel() throws DAOException{
+		return accessLevelDAO.getAllAccessLevel();
+	}
 	
 }

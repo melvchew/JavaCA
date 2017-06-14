@@ -24,8 +24,9 @@
 <td bgcolor="#57C9F4">AccessLevelNam:</td>
 <td>
 <select name="select">
-  <option value="1" selected>Manager</option>
-  <option value="2">employee</option>
+	<c:forEach items="${ accessList }" var="a">
+		<option value="${ a.accessLevelId }">${a.accessLevelName }</option>
+	</c:forEach>
 </select>
 </td>
 </tr>
