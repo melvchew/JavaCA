@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Manage Default Leave</title>
+<title>Admin Manage Default Leave</title>
 
 
 
@@ -72,7 +72,7 @@ input[type=text] {
 <body>
 	<h1>Default Leave</h1>
 	<!-- <p>Add the border-bottom property to th and td for horizontal dividers:</p> -->
-	<form method="post" action='/Laps/manageDefaultLeaveController'>
+	<form method="post" action='/Laps/AdminManageDefaultLeaveController'>
 		<table>
 			<tr>
 				<th>Position</th>

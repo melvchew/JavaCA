@@ -19,13 +19,13 @@ import service.DefaultLeaveManager;
  * Servlet implementation class manageDefaultLeaveController
  */
 @WebServlet("/manageDefaultLeaveController")
-public class manageDefaultLeaveController extends HttpServlet {
+public class AdminManageDefaultLeaveController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public manageDefaultLeaveController() {
+	public AdminManageDefaultLeaveController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -47,7 +47,7 @@ public class manageDefaultLeaveController extends HttpServlet {
 			// TODO Auto-generated catch block
 			request.setAttribute("dlList", dlList);
 
-			RequestDispatcher rd = request.getRequestDispatcher("/view/manageDefaultLeave.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/view/AdminManageDefaultLeave.jsp");
 			rd.forward(request, response);
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -82,7 +82,7 @@ public class manageDefaultLeaveController extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		RequestDispatcher rd = request.getRequestDispatcher("/view/manageDefaultLeave.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/view/AdminManageDefaultLeave.jsp");
 		rd.forward(request, response);
 
 	}
