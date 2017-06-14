@@ -81,8 +81,8 @@ input[type=text] {
 			</tr>
 			<c:forEach items="${dlList }" var="dl">
 				<tr>
-					<td><c:out value="${dl.positionId }"/></td>
-					<td>${dl.leaveTypeId }</td>
+					<td><c:out value="${dl.position.jobTitle }"/></td>
+					<td>${dl.leaveType.leaveType }</td>
 					<td><input required type="number" step="0.5" name="${dl.leaveTypeId }${dl.positionId }"  value="${dl.days}"></td>
 				</tr>
 			</c:forEach>

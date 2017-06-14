@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import data.DAOException;
 import model.DefaultLeaveDTO;
 import service.DefaultLeaveManager;
+import service.LeaveTypeManager;
+import service.PositionManager;
 
 
 /**
@@ -43,6 +45,14 @@ public class AdminManageDefaultLeaveController extends HttpServlet {
 			ArrayList<DefaultLeaveDTO> dlList;
 
 			dlList = dlm.getAllDL();
+			
+			PositionManager pm = new PositionManager();
+			LeaveTypeManager ltm = new LeaveTypeManager();
+
+			for (DefaultLeaveDTO dl : dlList) {
+				dl.setPosition(pm.findPositionById(dl.getPositionId()));
+				dl.setLeaveType(ltm.getLeaveType(dl.getLeaveTypeId()));
+			}
 
 			// TODO Auto-generated catch block
 			request.setAttribute("dlList", dlList);
@@ -64,7 +74,14 @@ public class AdminManageDefaultLeaveController extends HttpServlet {
 		try {
 			DefaultLeaveManager dlm = new DefaultLeaveManager();
 			ArrayList<DefaultLeaveDTO> dlList = dlm.getAllDL();
+			
+			PositionManager pm = new PositionManager();
+			LeaveTypeManager ltm = new LeaveTypeManager();
 
+			for (DefaultLeaveDTO dl : dlList) {
+				dl.setPosition(pm.findPositionById(dl.getPositionId()));
+				dl.setLeaveType(ltm.getLeaveType(dl.getLeaveTypeId()));
+			}
 			for (int i = 0; i < dlList.size(); i++) {
 				DefaultLeaveDTO ldto = new DefaultLeaveDTO();
 				ldto = dlList.get(i);
@@ -77,7 +94,7 @@ public class AdminManageDefaultLeaveController extends HttpServlet {
 				 */
 				request.setAttribute("dlList", dlList);
 			}
-		} catch (DAOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

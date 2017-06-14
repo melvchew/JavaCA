@@ -17,7 +17,13 @@ public class DefaultLeaveDTO {
 	private int leaveTypeId;
 	@Column(name="days")
 	private double days;
+	
+	@Transient
+	private PositionDTO position;
 
+	@Transient
+	private LeaveTypeDTO leaveType;
+	
 	public DefaultLeaveDTO() {
 		super();
 	}
@@ -27,6 +33,22 @@ public class DefaultLeaveDTO {
 		this.positionId = positionId;
 		this.leaveTypeId = leaveTypeId;
 		this.days = days;
+	}
+
+	public PositionDTO getPosition() {
+		return position;
+	}
+
+	public void setPosition(PositionDTO position) {
+		this.position = position;
+	}
+
+	public LeaveTypeDTO getLeaveType() {
+		return leaveType;
+	}
+
+	public void setLeaveType(LeaveTypeDTO leaveType) {
+		this.leaveType = leaveType;
 	}
 
 	public int getPositionId() {

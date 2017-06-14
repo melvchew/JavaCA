@@ -32,14 +32,15 @@ public class PositionDTO {
 	
 	@OneToMany(mappedBy="position")
 	private List<UsersDTO> users;
-	@Column(name="delete_flag")
-	private int deleteFlag;
+	
+	@Column(name="delete_flag", columnDefinition = "tinyint")
+	private boolean deleteFlag;
 
 	public PositionDTO() {
 		super();
 	}
 
-	public PositionDTO(int positionId, AccessLevelDTO accessLevel, String jobTitle, int deleteFlag) {
+	public PositionDTO(int positionId, AccessLevelDTO accessLevel, String jobTitle, boolean deleteFlag) {
 		super();
 		this.positionId = positionId;
 		this.accessLevel = accessLevel;
@@ -47,11 +48,11 @@ public class PositionDTO {
 		this.deleteFlag=deleteFlag;
 	}
 
-	public int getDeleteFlag() {
+	public boolean getDeleteFlag() {
 		return deleteFlag;
 	}
 
-	public void setDeleteFlag(int deleteFlag) {
+	public void setDeleteFlag(boolean deleteFlag) {
 		this.deleteFlag = deleteFlag;
 	}
 

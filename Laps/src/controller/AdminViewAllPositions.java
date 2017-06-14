@@ -50,7 +50,7 @@ public class AdminViewAllPositions extends HttpServlet {
 				e1.printStackTrace();
 			}
 			
-		    positionDTO.setDeleteFlag(1);
+		    //positionDTO.setDeleteFlag(1);
 		    
 			try {
 				positionManager.updatePosition(positionDTO);
