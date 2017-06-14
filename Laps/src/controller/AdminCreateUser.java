@@ -11,13 +11,15 @@ import javax.servlet.http.HttpServletResponse;
 import data.DAOException;
 import model.UsersDTO;
 import service.DateManager;
+import service.DefaultLeaveManager;
+import service.LeaveManager;
 import service.PositionManager;
 import service.UserManager;
 
 /**
  * Servlet implementation class createUser
  */
-@WebServlet("/createuser")
+@WebServlet("/admin/createuser")
 public class AdminCreateUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,12 +36,8 @@ public class AdminCreateUser extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		try {
-			doProcess(request, response);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		RequestDispatcher rd = request.getRequestDispatcher("/view/AdminCreateUser.jsp");
+		rd.forward(request, response);
 	}
 
 	/**
@@ -75,6 +73,9 @@ public class AdminCreateUser extends HttpServlet {
 		u.setOtHours(0);//the default OT hour should be 0.
 		
 		uMan.insertUser(u);
+		
+		DefaultLeaveManager dlMan = new DefaultLeaveManager();
+		LeaveManager lMan = new LeaveManager();
 				
 		RequestDispatcher rd = request.getRequestDispatcher("/showusers");
 		rd.forward(request, response);

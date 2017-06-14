@@ -56,7 +56,7 @@ public class UsersDAOImpl implements UsersDAO {
 		List<UsersDTO> users = new ArrayList<>();
 
 		try {
-			users = entitymanager.createQuery("SELECT u FROM UsersDTO u WHERE u.username = :uname", UsersDTO.class)
+			users = entitymanager.createQuery("SELECT u FROM UsersDTO u WHERE u.username = :uname AND u.deleteFlag != true", UsersDTO.class)
 					.setParameter("uname", username).getResultList();
 		} catch (Exception e) {
 			String msg = "Error when getting user. Message: " + e;
@@ -108,7 +108,7 @@ public class UsersDAOImpl implements UsersDAO {
 			UsersDTO user = entitymanager.find(UsersDTO.class, DTO.getUserId());
 
 			entitymanager.getTransaction().begin();
-			// change delete flag column to 1
+			user.setDeleteFlag(true);
 			entitymanager.getTransaction().commit();
 
 		} catch (Exception e) {
@@ -142,7 +142,7 @@ public class UsersDAOImpl implements UsersDAO {
 		// TODO Auto-generated method stub
 		List<UsersDTO> users = new ArrayList<>();
 		try {
-			users = entitymanager.createQuery("SELECT u FROM UsersDTO u", UsersDTO.class).getResultList();
+			users = entitymanager.createQuery("SELECT u FROM UsersDTO u WHERE u.deleteFlag != true", UsersDTO.class).getResultList();
 					
 		} catch (Exception e) {
 			String msg = "Error when get all users. Message: " + e;

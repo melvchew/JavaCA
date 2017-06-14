@@ -3,5 +3,7 @@
 	<decorator name="basic-theme" page="/decorators/laps-theme.jsp">
 		<pattern>/data/*</pattern>
 	</decorator>
-	
+	<decorator name="basic-theme" page="/decorators/admin-theme.jsp">
+		<pattern>/admin/*</pattern>
+	</decorator>
 </decorators>

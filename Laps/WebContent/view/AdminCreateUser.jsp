@@ -9,7 +9,7 @@
 </head>
 <body>
 <h2>Create User</h2>
-<form name="createUserForm" action="/Laps/createuser" method="post">
+<form name="createUserForm" method="post">
 
     User Name: <input type="text" name="uname" /><br>
     Password: <input type="text" name="passwd" /><br>

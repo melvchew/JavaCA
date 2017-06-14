@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.HolidaysDTO;
+import service.DateManager;
 import service.HolidayManager;
 
 /**
@@ -35,8 +37,10 @@ public class AdminViewAllAndDeleteHolidays extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String date =request.getParameter("date");
 		HolidayManager holidayManager=new HolidayManager();
+		DateManager dateManager = new DateManager();
 		if(date != null){
-			Timestamp date1=Timestamp.valueOf(date);
+			//Timestamp date1=Timestamp.valueOf(date);
+			Date date1 = dateManager.createDate(date);
 			HolidaysDTO dto=null;
 			try {
 				dto=holidayManager.findHolidayBydate(date1);

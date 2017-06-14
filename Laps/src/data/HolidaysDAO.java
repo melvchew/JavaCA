@@ -16,7 +16,8 @@ public interface HolidaysDAO {
 	
 	public ArrayList<HolidaysDTO> getAllHolidays() throws Exception; 
 	
-	public HolidaysDTO findHolidayBydate(Timestamp date) throws Exception;
+	public HolidaysDTO findHolidayBydate(Date date) throws Exception;
 	
 	public boolean isHoliday(Date date) throws Exception;
+
 }
