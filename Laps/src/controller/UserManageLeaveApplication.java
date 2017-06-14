@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.lang.NumberFormatException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -60,10 +59,12 @@ public class UserManageLeaveApplication extends HttpServlet {
 		LeaveTypeManager ltm = new LeaveTypeManager();
 		int appnId = Integer.parseInt(request.getParameter("appnId"));
 		String action = request.getParameter("btnAction");
+		
 		System.out.println("------"+action);
 		System.out.println("--Start Date : --"+request.getParameter("StartDate"));
 		System.out.println("--E Date : --"+ request.getParameter("EndDate"));
 		System.out.println("--Leave Type -- "+ request.getParameter("leaveType"));
+		
 		DateManager dm = new DateManager();
 		try {
 			LeaveAppnDTO leave = lam.getLeaveAppn(appnId);

@@ -14,22 +14,32 @@
 	String s1="",s2="",s3="";
 	%>
 		<c:if test="${ leave.status == 'PENDING'}">
-			<%
-			readonly ="";
-			btnPending = "submit";
-			btnApprove = "hidden";
-			 %>
+			
 		</c:if>
-
+		<c:choose>
+    		<c:when  test="${ leave.status == 'PENDING'}">
+        		<%
+					readonly ="";
+					btnPending = "submit";
+					btnApprove = "hidden";
+			 	%>
+    		</c:when>
+    		<c:when  test="${ leave.status == 'REJECTED'}">
+        		<%
+					btnPending = "hidden";
+					btnApprove = "hidden";
+			 	%>
+    		</c:when>
+		</c:choose>
 		<input type="hidden" name="appnId" value="${leave.appnId}" />
 		
 		 <label>Application Id:</label>
 		 <input type="text" name="ApplicationID" value="${leave.appnId }" readonly>
-		 <br /> 
+		 <br/> 
 		
 		 <label>EmployeeName:</label> 
 		 <input type="text" name="EmployeeName" value="${leave.user.name }" readonly>
-		 <br /> 
+		 <br/> 
 		 
 		<label>Leave Type :</label>
 		<%if(readonly == "readonly"){%>
@@ -52,11 +62,11 @@
 		<option value="3" <%=s3%>>Compensation</option> 
 		</select>
 		<%}%>
-		<br /> 
+		<br/> 
 		
 		<label>StartDate: </label> 
 		<input type="text" name="StartDate" value="<fmt:formatDate type="date" pattern="MM/dd/yyyy" dateStyle="short" value="${leave.startDate }"/>" <%=readonly%>/>
-		<br />
+		<br/>
 		 
 		<label>End Date</label> 
 		
