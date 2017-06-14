@@ -45,7 +45,7 @@ public class updateUser extends HttpServlet {
 			//Set data form page to object u
 			u.setUsername(request.getParameter("uname"));
 			u.setPassword(request.getParameter("passwd"));
-			u.setPosition(pMan.getPosition(Integer.parseInt(request.getParameter("posid"))));
+			u.setPosition(pMan.findPositionById(Integer.parseInt(request.getParameter("posid"))));
 			u.setName(request.getParameter("name"));
 			
 			//Need to change!!!! Remaining problem!!!
@@ -58,7 +58,7 @@ public class updateUser extends HttpServlet {
 			u.setOtHours(Double.parseDouble(request.getParameter("othour")));
 			//Update to database
 			uMan.updateUser(u);
-		} catch (DAOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

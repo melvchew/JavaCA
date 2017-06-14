@@ -36,7 +36,7 @@ public class createUser extends HttpServlet {
 
 		try {
 			doProcess(request, response);
-		} catch (DAOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -49,14 +49,14 @@ public class createUser extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 			doProcess(request, response);
-		} catch (DAOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
 	private void doProcess(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, DAOException {
+			throws NumberFormatException, Exception {
 		UserManager uMan = new UserManager();
 		UsersDTO u = new UsersDTO();
 		PositionManager pMan=new PositionManager();
@@ -64,7 +64,7 @@ public class createUser extends HttpServlet {
 		
 		u.setUsername(request.getParameter("uname"));
 		u.setPassword(request.getParameter("passwd"));
-		u.setPosition(pMan.getPosition(Integer.parseInt(request.getParameter("posid"))));
+		u.setPosition(pMan.findPositionById(Integer.parseInt(request.getParameter("posid"))));
 		u.setName(request.getParameter("name"));
 		System.out.println("DOB: "+request.getParameter("dob"));
 		u.setDob(dMan.createDate(request.getParameter("dob")));
