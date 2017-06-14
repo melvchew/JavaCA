@@ -39,7 +39,7 @@ public class UserManageLeaveApplication extends HttpServlet {
 		LeaveAppnManager lam = new LeaveAppnManager();
 		
 		
-		int key = 2;//Integer.parseInt(request.getParameter("id"));
+		int key = 3;//Integer.parseInt(request.getParameter("id"));
 		try {
 			LeaveAppnDTO leave = lam.getLeaveAppn(key);
 			request.setAttribute("leave", leave);

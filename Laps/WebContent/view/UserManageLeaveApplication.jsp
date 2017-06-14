@@ -17,7 +17,7 @@
 			
 		</c:if>
 		<c:choose>
-    		<c:when  test="${ leave.status == 'PENDING'}"}">
+    		<c:when  test="${ leave.status == 'PENDING'}">
         		<%
 					readonly ="";
 					btnPending = "submit";
