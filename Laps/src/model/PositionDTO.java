@@ -12,28 +12,24 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="position")
+@Table(name = "position")
 public class PositionDTO {
-	
-	@Id
-	@Column(name="position_id")
-	private int positionId;
-	
-	public void setPositionId(int positionId) {
-		this.positionId = positionId;
-	}
 
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="access_level_id")
+	@Id
+	@Column(name = "position_id")
+	private int positionId;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "access_level_id")
 	private AccessLevelDTO accessLevel;
-	
-	@Column(name="job_title")
+
+	@Column(name = "job_title")
 	private String jobTitle;
-	
-	@OneToMany(mappedBy="position")
+
+	@OneToMany(mappedBy = "position")
 	private List<UsersDTO> users;
-	
-	@Column(name="delete_flag", columnDefinition = "tinyint")
+
+	@Column(name = "delete_flag", columnDefinition = "tinyint")
 	private boolean deleteFlag;
 
 	public PositionDTO() {
@@ -45,7 +41,11 @@ public class PositionDTO {
 		this.positionId = positionId;
 		this.accessLevel = accessLevel;
 		this.jobTitle = jobTitle;
-		this.deleteFlag=deleteFlag;
+		this.deleteFlag = deleteFlag;
+	}
+
+	public void setPositionId(int positionId) {
+		this.positionId = positionId;
 	}
 
 	public boolean getDeleteFlag() {

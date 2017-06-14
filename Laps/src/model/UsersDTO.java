@@ -15,7 +15,6 @@ public class UsersDTO {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="position_id")
 	private PositionDTO position;
-	
 	private String name;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dob;
@@ -26,25 +25,20 @@ public class UsersDTO {
 	private int managerId;
 	@Column(name="ot_hours")
 	private double otHours;
-	
+	@Column(name="profile_pic_url")
+	private String picUrl;
+	@Column(name="delete_flag", columnDefinition = "tinyint")
+	private boolean deleteFlag;
 	@OneToMany(mappedBy = "leaveType")
 	private List<LeaveAppnDTO> leaveAppns;
 	
-
-	public List<LeaveAppnDTO> getLeaveAppns() {
-		return leaveAppns;
-	}
-
-	public void setLeaveAppns(List<LeaveAppnDTO> leaveAppns) {
-		this.leaveAppns = leaveAppns;
-	}
-
 	public UsersDTO() {
 		super();
 	}
 
 	public UsersDTO(int userId, String username, String password, PositionDTO position, String name, Date dob,
-			String phone, String address, String email, int managerId, double otHours) {
+			String phone, String address, String email, int managerId, double otHours, String picUrl,
+			boolean deleteFlag) {
 		super();
 		this.userId = userId;
 		this.username = username;
@@ -57,6 +51,16 @@ public class UsersDTO {
 		this.email = email;
 		this.managerId = managerId;
 		this.otHours = otHours;
+		this.picUrl = picUrl;
+		this.deleteFlag = deleteFlag;
+	}
+
+	public List<LeaveAppnDTO> getLeaveAppns() {
+		return leaveAppns;
+	}
+
+	public void setLeaveAppns(List<LeaveAppnDTO> leaveAppns) {
+		this.leaveAppns = leaveAppns;
 	}
 
 	public String getUsername() {
@@ -141,6 +145,22 @@ public class UsersDTO {
 
 	public int getUserId() {
 		return userId;
+	}
+
+	public String getPicUrl() {
+		return picUrl;
+	}
+
+	public void setPicUrl(String picUrl) {
+		this.picUrl = picUrl;
+	}
+
+	public boolean isDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(boolean deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 }
