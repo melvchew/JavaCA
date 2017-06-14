@@ -16,7 +16,7 @@ import service.PositionManager;
 /**
  * Servlet implementation class AdminInsertPosition
  */
-@WebServlet("/AdminInsertPosition")
+@WebServlet("/admin/insertposition")
 public class AdminInsertPosition extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

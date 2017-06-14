@@ -30,9 +30,9 @@
 				<td>${position.accessLevel.accessLevelName}</td>
 				<td>${position.deleteFlag}</td>
 				<td>  
-				 <a href="AdminUpdatePosition?positionId=${position.positionId}">Update</a> 
-                 <a href="AdminInsertPosition?positionId=${position.positionId}">Insert</a> 
-                 <a href= "AdminViewAllPositions?positionId=${position.positionId}">Delete</a>   
+				 <a href="updateposition?positionId=${position.positionId}">Update</a> 
+                 <a href="insertposition">Insert</a> 
+                 <a href= "viewpositions?positionId=${position.positionId}">Delete</a>   
 				</td>
 			</tr>
 			

@@ -20,7 +20,7 @@ import service.PositionManager;
 /**
  * Servlet implementation class AdminViewAllPositions
  */
-@WebServlet("/AdminViewAllPositions")
+@WebServlet("/admin/viewpositions")
 public class AdminViewAllPositions extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -53,7 +53,7 @@ public class AdminViewAllPositions extends HttpServlet {
 		    //positionDTO.setDeleteFlag(1);
 		    
 			try {
-				positionManager.updatePosition(positionDTO);
+				positionManager.deletePosition(positionDTO);
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
