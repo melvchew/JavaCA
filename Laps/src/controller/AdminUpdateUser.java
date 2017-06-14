@@ -18,13 +18,13 @@ import service.UserManager;
  * Servlet implementation class UpdateUser
  */
 @WebServlet("/upduser")
-public class updateUser extends HttpServlet {
+public class AdminUpdateUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public updateUser() {
+    public AdminUpdateUser() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -88,7 +88,7 @@ public class updateUser extends HttpServlet {
 		
 		//Give u to the UpdateUser.jsp
 		request.setAttribute("u", u);
-		RequestDispatcher rd = request.getRequestDispatcher("/view/UpdateUser.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/view/AdminUpdateUser.jsp");
 		rd.forward(request, response);
 	}
 

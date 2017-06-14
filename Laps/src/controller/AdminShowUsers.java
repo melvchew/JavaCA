@@ -18,13 +18,13 @@ import service.UserManager;
  * Servlet implementation class ShowUsers
  */
 @WebServlet("/showusers")
-public class ShowUsers extends HttpServlet {
+public class AdminShowUsers extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ShowUsers() {
+    public AdminShowUsers() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -45,7 +45,7 @@ public class ShowUsers extends HttpServlet {
 		}
 		//System.out.println(uList.size());
 		request.setAttribute("uList", uList);
-		RequestDispatcher rd = request.getRequestDispatcher("/view/manageStaff.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/view/AdminManageStaff.jsp");
 		rd.forward(request, response);
 	}
 

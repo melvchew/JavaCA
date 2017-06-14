@@ -29,7 +29,7 @@ th, td {
 <p>All the current user details.</p>
 <!-- button works Only when run on this.jsp??!!! -->
 
-<button type="button" onclick="javascript:window.location.href='/Laps/view/CreateUser.jsp';">Create User</button>
+<button type="button" onclick="javascript:window.location.href='/Laps/view/AdminCreateUser.jsp';">Create User</button>
 
 
 <table id="tabUser" style="width: 100%">
