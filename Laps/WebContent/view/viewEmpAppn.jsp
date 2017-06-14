@@ -9,7 +9,7 @@
 <title>Pending Leave Applications</title>
 </head>
 <body>
-	<form method="get">
+	<form method="post">
 		<table class="table">
 			<thead>
 				<tr>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators>
+	<decorator name="basic-theme" page="/decorators/laps-theme.jsp">
+		<pattern>/data/*</pattern>
+	</decorator>
+	<decorator name="basic-theme" page="/decorators/laps-theme.jsp">
+		<pattern>/*</pattern>
+	</decorator>
+</decorators>
