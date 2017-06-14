@@ -13,7 +13,7 @@
 <font color="#57C9F4" size=10>Insert Holidays</font>
 <hr>
 <c:if test="${ param['Insert'] == 'Insert' }">
-	<p>The holiday is updated!</p>
+	<p>The holiday is inserted!</p>
 </c:if>
 <form action="AdminInsertHolidays" method="post">
 

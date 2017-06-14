@@ -1,7 +1,10 @@
 package data;
 
+import java.util.ArrayList;
+
 import javax.persistence.*;
 import model.AccessLevelDTO;
+import model.DefaultLeaveDTO;
 
 public class AccessLevelDAOImpl implements AccessLevelDAO {
 	
@@ -15,5 +18,7 @@ public class AccessLevelDAOImpl implements AccessLevelDAO {
 
 		return al;
 	}
+
+
 
 }

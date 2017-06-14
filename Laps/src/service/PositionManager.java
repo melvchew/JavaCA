@@ -1,7 +1,10 @@
 package service;
+import java.util.ArrayList;
+
 import data.DAOException;
 import data.DAOFactory;
 import data.PositionDAO;
+import model.HolidaysDTO;
 import model.PositionDTO;
 import model.UsersDTO;
 
@@ -25,7 +28,11 @@ public class PositionManager {
 	public PositionDTO getPosition(UsersDTO users) throws DAOException{
 		return positionDAO.getPosition(users);
 	}
-	public PositionDTO getPosition(int positionId) throws DAOException{
-		return positionDAO.getPosition(positionId);
+	
+	public PositionDTO findPositionById(Integer id) throws Exception{
+		return positionDAO.findPositionById(id);
+	}
+	public ArrayList<PositionDTO> getAllPositions() throws Exception{
+		return positionDAO.getAllPositions();
 	}
 }

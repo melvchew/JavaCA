@@ -1,9 +1,10 @@
 package data;
 
+import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
+import javax.persistence.Query;
 import model.PositionDTO;
 import model.UsersDTO;
 
@@ -60,12 +61,36 @@ public class PositionDAOImpl implements PositionDAO {
 		PositionDTO p = entitymanager.find(PositionDTO.class, users.getPosition());
 		return p;
 	}
-
-	@Override
-	public PositionDTO getPosition(int positionId) throws DAOException {
-		// TODO Auto-generated method stub
-		PositionDTO p = entitymanager.find(PositionDTO.class, positionId);
-		return p;
+	public PositionDTO findPositionById(Integer id) throws Exception{
+		PositionDTO positionDTO=null;
+		try{
+			positionDTO=entitymanager.find(PositionDTO.class, id);
+		}catch (Exception e){
+			
+			System.out.println(e);
+		}
+		
+		return positionDTO;
+		
+	}
+	
+	public ArrayList<PositionDTO> getAllPositions() throws Exception{
+		ArrayList<PositionDTO> list = null;
+		try{
+			entitymanager.getTransaction().begin();
+			Query query = entitymanager.createQuery("Select s from PositionDTO s");
+			
+			 list = (ArrayList<PositionDTO>)query.getResultList();
+	
+				//entitymanager.close();
+				
+				//PersistenceManager.INSTANCE.close();
+		
+		}catch (Exception e)
+		{
+			System.out.println(e);
+		}
+		return list;
 	}
 
 }

@@ -19,6 +19,10 @@ public class PositionDTO {
 	@Column(name="position_id")
 	private int positionId;
 	
+	public void setPositionId(int positionId) {
+		this.positionId = positionId;
+	}
+
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="access_level_id")
 	private AccessLevelDTO accessLevel;
@@ -28,16 +32,27 @@ public class PositionDTO {
 	
 	@OneToMany(mappedBy="position")
 	private List<UsersDTO> users;
+	@Column(name="delete_flag")
+	private int deleteFlag;
 
 	public PositionDTO() {
 		super();
 	}
 
-	public PositionDTO(int positionId, AccessLevelDTO accessLevel, String jobTitle) {
+	public PositionDTO(int positionId, AccessLevelDTO accessLevel, String jobTitle, int deleteFlag) {
 		super();
 		this.positionId = positionId;
 		this.accessLevel = accessLevel;
 		this.jobTitle = jobTitle;
+		this.deleteFlag=deleteFlag;
+	}
+
+	public int getDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(int deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 
 	public List<UsersDTO> getUsers() {
