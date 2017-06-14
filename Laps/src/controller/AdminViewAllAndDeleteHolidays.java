@@ -19,7 +19,7 @@ import service.HolidayManager;
 /**
  * Servlet implementation class AdminViewAllAndDeleteHolidays
  */
-@WebServlet("/AdminViewAllAndDeleteHolidays")
+@WebServlet("/admin/viewholidays")
 public class AdminViewAllAndDeleteHolidays extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

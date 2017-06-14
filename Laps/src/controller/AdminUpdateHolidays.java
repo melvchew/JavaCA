@@ -18,7 +18,7 @@ import service.HolidayManager;
 /**
  * Servlet implementation class AdminUpdateHolidays
  */
-@WebServlet("/AdminUpdateHolidays")
+@WebServlet("/admin/updateholiday")
 public class AdminUpdateHolidays extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

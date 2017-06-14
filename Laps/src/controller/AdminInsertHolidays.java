@@ -18,7 +18,7 @@ import service.HolidayManager;
 /**
  * Servlet implementation class AdminInsertHolidays
  */
-@WebServlet("/AdminInsertHolidays")
+@WebServlet("/admin/insertholiday")
 public class AdminInsertHolidays extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -47,6 +47,7 @@ public class AdminInsertHolidays extends HttpServlet {
 		DateManager dateManager = new DateManager();
 		String date=request.getParameter("date");
 		Date date1=dateManager.createDate(date);
+		
 		String desp=request.getParameter("Description");
 		HolidaysDTO holidaysDTO=new HolidaysDTO();
 		holidaysDTO.setDate(date1);
