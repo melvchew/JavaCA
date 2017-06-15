@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
+	<%@page import="model.UsersDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,81 +30,85 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-
+<%
+	session = request.getSession(false);
+	UsersDTO lguser = (UsersDTO) session.getAttribute("loggedInUser");
+%>
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
+	<div class="wrapper">
 
-  <!-- Main Header -->
-  <header class="main-header">
+		<!-- Main Header -->
+		<header class="main-header">
 
-    <!-- Logo -->
-    <a href="index2.html" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>L</b>APS</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>ISS</b>LAPS</span>
-    </a>
+			<!-- Logo -->
+			<a href="#" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
+				<span class="logo-mini"><b>L</b>APS</span> <!-- logo for regular state and mobile devices -->
+				<span class="logo-lg"><b>ISS</b>LAPS</span>
+			</a>
 
-    <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top" role="navigation">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
-      <!-- Navbar Right Menu -->
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
+			<!-- Header Navbar -->
+			<nav class="navbar navbar-static-top" role="navigation">
+				<!-- Sidebar toggle button-->
+				<a href="#" class="sidebar-toggle" data-toggle="offcanvas"
+					role="button"> <span class="sr-only">Toggle navigation</span>
+				</a>
+				<!-- Navbar Right Menu -->
+				<div class="navbar-custom-menu">
+					<ul class="nav navbar-nav">
 
-          <!-- User Account Menu -->
-          <li class="dropdown user user-menu">
-            <!-- Menu Toggle Button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <!-- The user image in the navbar-->
-              <img src="../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Bobby Bob</span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- The user image in the menu -->
-              <li class="user-header">
-                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+						<!-- User Account Menu -->
+						<li class="dropdown user user-menu">
+							<!-- Menu Toggle Button --> <a href="#" class="dropdown-toggle"
+							data-toggle="dropdown"> <!-- The user image in the navbar-->
+								<img src="../dist/img/user2-160x160.jpg" class="user-image"
+								alt="User Image"> <!-- hidden-xs hides the username on small devices so only the image appears. -->
+								<span class="hidden-xs"><%= lguser.getName() %></span>
+						</a>
+							<ul class="dropdown-menu">
+								<!-- The user image in the menu -->
+								<li class="user-header"><img
+									src="../dist/img/user2-160x160.jpg" class="img-circle"
+									alt="User Image">
 
-                <p>
-                  Bobby Bob - Admin
-                </p>
-              </li>
-              <li class="user-footer">
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
+									<p><%= lguser.getName() %> - <%= lguser.getPosition().getJobTitle() %></p></li>
+								<li class="user-footer">
+									<div class="pull-left">
+										<a href="/Laps/employee/viewleavehistory" class="btn btn-default btn-flat">View Leave
+											History</a>
+									</div>
+									<div class="pull-right">
+										<a href="/Laps/Login" class="btn btn-default btn-flat">Sign out</a>
+									</div>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<!-- Left side column. contains the logo and sidebar -->
+		<aside class="main-sidebar">
 
-    <section class="sidebar">
+			<section class="sidebar">
 
-      <div class="user-panel">
-        <div class="pull-left image">
-          <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-        </div>
-        <div class="pull-left info">
-          <p>Bobby Bob</p>
-          <!-- Status -->
-          <a href="#"> Admin</a>
-        </div>
-      </div>
+				<div class="user-panel">
+					<div class="pull-left image">
+						<img src="../dist/img/user2-160x160.jpg" class="img-circle"
+							alt="User Image">
+					</div>
+					<div class="pull-left info">
+						<p><%= lguser.getName() %></p>
+						<!-- Status -->
+						<a href="#"> <%= lguser.getPosition().getJobTitle() %></a>
+					</div>
+				</div>
+
 
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <li class="header">NAVIGATION</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+        <li class="active"><a href="/Laps/admin/home"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-pencil-square-o"></i> <span>Manage</span>
             <span class="pull-right-container">
@@ -118,7 +123,7 @@
             <li><a href="/Laps/admin/manageleavetypes"><i class="fa fa-circle-o"></i>Leave Types</a></li>
           </ul>
         </li>
-        <li><a href="#"><i class="fa fa-reply"></i> <span>Sign Out</span></a></li>
+        <li><a href="/Laps/Login"><i class="fa fa-reply"></i> <span>Sign Out</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -127,57 +132,55 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Your Dashboard
-        <small>LAPS</small>
-      </h1>
-    </section>
+			<!-- Content Header (Page header) -->
+			<section class="content-header">
+				<h1>
+					LAPS
+				</h1>
+			</section>
 
-    <!-- Main content -->
-    <section class="content">
+			<!-- Main content -->
+			<section class="content">
 
-      <!-- Your Page Content Here -->
-      <decorator:body />
+				<!-- Your Page Content Here -->
+				<decorator:body />
 
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+			</section>
+			<!-- /.content -->
+		</div>
+		<!-- /.content-wrapper -->
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="pull-right hidden-xs">
-      Anything you want
-    </div>
-    <!-- Default to the left -->
-    <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
-  </footer>
+		<!-- Main Footer -->
+		<footer class="main-footer">
+			<!-- To the right -->
+			<div class="pull-right hidden-xs">Laps</div>
+			<!-- Default to the left -->
+			<strong>Copyright &copy; 2017 <a href="#">Company</a>.
+			</strong> All rights reserved.
+		</footer>
 
-<!-- ./wrapper -->
+		<!-- ./wrapper -->
 
-<!-- REQUIRED JS SCRIPTS -->
+		<!-- REQUIRED JS SCRIPTS -->
 
-<!-- jQuery 2.2.3 -->
-<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-<!-- Bootstrap 3.3.6 -->
-<script src="../bootstrap/js/bootstrap.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../dist/js/app.min.js"></script>
-<!-- bootstrap datepicker -->
-<script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- Page script -->
-<script>
-  $(function () {
+		<!-- jQuery 2.2.3 -->
+		<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+		<!-- Bootstrap 3.3.6 -->
+		<script src="../bootstrap/js/bootstrap.min.js"></script>
+		<!-- AdminLTE App -->
+		<script src="../dist/js/app.min.js"></script>
+		<!-- bootstrap datepicker -->
+		<script src="../plugins/datepicker/bootstrap-datepicker.js"></script>
+		<!-- Page script -->
+		<script>
+			$(function() {
 
-    //Date picker
-    $('#datepicker').datepicker({
-      autoclose: true
-    });
+				//Date picker
+				$('#datepicker').datepicker({
+					autoclose : true
+				});
 
-  });
-</script>
+			});
+		</script>
 </body>
 </html>

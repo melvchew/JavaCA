@@ -50,14 +50,20 @@ public class ViewLeaveHistoryServlet extends HttpServlet {
 			
 			
 			//gets UserDTO from request.session
-//			HttpSession session = request.getSession();					//instantiates a session object
+			HttpSession session = request.getSession();					//instantiates a session object
 //			session.setAttribute("user", user); 
 //			user = (UsersDTO) session.getAttribute("user"); 			//gets the UsersDTO from the session
 			
 			
 			
 //			UsersDAO userdao = new UsersDAOImpl();						//hardcoded
-			UsersDTO user = um.getUser("pete"); 					//hardcoded
+			UsersDTO user = new UsersDTO();					//hardcoded
+			String id = request.getParameter("id");
+			if ( id != null) {
+				user = um.getUser(id);
+			} else{
+				user = (UsersDTO) session.getAttribute("loggedInUser");
+			}
 			
 			LeaveAppnManager lam = new LeaveAppnManager(); 				//obtains the service Manager
 			ArrayList<LeaveAppnDTO> leaveList = lam.getLeaveAppn(user); //uses service Manager to extract data from database

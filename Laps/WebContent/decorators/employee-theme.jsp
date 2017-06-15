@@ -137,7 +137,7 @@
 						<ul class="treeview-menu">
 							<li><a href="/Laps/manager/viewapplications"><i
 									class="fa fa-circle-o"></i>Pending Leave Application</a></li>
-							<li><a href="#"><i class="fa fa-circle-o"></i>View
+							<li><a href="/Laps/manager/ViewUsersHistoryByManager"><i class="fa fa-circle-o"></i>View
 									Employee History</a></li>
 						</ul></li>
 
@@ -152,12 +152,10 @@
 						<ul class="treeview-menu">
 							<li><a href="/Laps/employee/submitleave"><i
 									class="fa fa-circle-o"></i>Submit Leave Application</a></li>
-							<li><a href="/Laps/employee/manageleave"><i
-									class="fa fa-circle-o"></i>Manage Leave Applications</a></li>
 						</ul></li>
 					<li><a href="/Laps/employee/viewleavehistory"><i
 							class="fa fa-hourglass-end"></i> <span>Leave History</span></a></li>
-					<li><a href="#"><i class="fa fa-reply"></i> <span>Sign
+					<li><a href="/Laps/Login"><i class="fa fa-reply"></i> <span>Sign
 								Out</span></a></li>
 				</ul>
 				<!-- /.sidebar-menu -->
