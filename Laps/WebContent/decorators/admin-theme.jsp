@@ -108,7 +108,6 @@
             <li><a href="/Laps/admin/viewholidays"><i class="fa fa-circle-o"></i>Holidays</a></li>
             <li><a href="/Laps/admin/managedefaultleaves"><i class="fa fa-circle-o"></i>Default Leaves</a></li>
             <li><a href="/Laps/admin/manageleavetypes"><i class="fa fa-circle-o"></i>Leave Types</a></li>
-            <li><a href="/Laps/admin/managestaffleaves"><i class="fa fa-circle-o"></i>Employee Leaves</a></li>
           </ul>
         </li>
         <li><a href="/Laps/Login"><i class="fa fa-reply"></i> <span>Sign Out</span></a></li>
