@@ -34,11 +34,11 @@
 					<table>
 						<tr>
 							<td>From :</td>
-							<td><input type="text" name="StartDate"></td>
+							<td><input type="text" data-provide="datepicker" name="StartDate" readonly="readonly"></td>
 						</tr>
 						<tr>
 							<td>To :</td>
-							<td><input type="text" name="EndDate"></td>
+							<td><input type="text" data-provide="datepicker" name="EndDate" readonly="readonly"></td>
 						</tr>
 						<tr>
 							<td>Reasons:</td>

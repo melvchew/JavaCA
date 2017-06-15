@@ -16,7 +16,7 @@ import model.LeaveAppnDTO;
 /**
  * Servlet implementation class ManageLeaveApplication
  */
-@WebServlet("manager/manageleave")
+@WebServlet("/manager/manageleave")
 public class ManageLeaveApplication extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

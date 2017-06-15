@@ -6,7 +6,7 @@
 	<decorator name="admin-theme" page="/decorators/admin-theme.jsp">
 		<pattern>/admin/*</pattern>
 	</decorator>
-	<decorator name="manager-theme" page="/decorators/manager-theme.jsp">
+	<decorator name="employee-theme" page="/decorators/employee-theme.jsp">
 		<pattern>/manager/*</pattern>
 	</decorator>
 </decorators>

@@ -28,7 +28,7 @@ import service.UserManager;
 /**
  * Servlet implementation class SubmitLeaveServlet
  */
-@WebServlet("/SubmitLeaveServlet")
+@WebServlet("/employee/submitleave")
 public class SubmitLeaveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
