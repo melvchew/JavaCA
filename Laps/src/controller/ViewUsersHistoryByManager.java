@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import data.DAOException;
 import model.LeaveAppnDTO;
@@ -28,8 +29,9 @@ public class ViewUsersHistoryByManager extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			UserManager um = new UserManager();
-
-			ArrayList<UsersDTO> al = um.getUsersByManager(um.getUser("zwe"));// PASS
+			HttpSession session = request.getSession();	
+			UsersDTO user = (UsersDTO) session.getAttribute("loggedInUser");
+			ArrayList<UsersDTO> al = um.getUsersByManager(user);// PASS
 																				// MANAGER
 																				// ID
 																				// HERE

@@ -11,29 +11,24 @@
 </head>
 <body>
 	<form method="post">
-		<center>
-			<table>
-				<thead>
-					<tr>
-						<th colspan="2" align="center">Log In</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>User Name:</td>
-						<td><input type="text" name="txtUname" value="" /></td>
-					</tr>
-					<tr>
-						<td>Password:</td>
-						<td><input type="password" name="txtPwd" value="" /></td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center"><input type="submit" value="Login" />
-						<input type="reset" value="Reset" /></td>
-					</tr>
-				</tbody>
-			</table>
-		</center>
+		<div class="form-group has-feedback">
+			<input type="text" class="form-control" placeholder="username"
+				name="txtUname" value="" /> <span
+				class="glyphicon glyphicon-envelope form-control-feedback"></span>
+		</div>
+		<div class="form-group has-feedback">
+			<input type="password" class="form-control" placeholder="Password"
+				name="txtPwd" value="" /> <span
+				class="glyphicon glyphicon-lock form-control-feedback"></span>
+		</div>
+		<div class="row">
+			<!-- /.col -->
+			<div class="col-xs-4">
+				<button type="submit" class="btn btn-primary btn-block btn-flat"
+					value="Login">Sign In</button>
+			</div>
+			<!-- /.col -->
+		</div>
 	</form>
 </body>
 </html>

@@ -17,6 +17,12 @@ public class LeaveDTO {
 	private int leaveTypeId;
 	@Column(name="days_remaining")
 	private double daysRemaining;
+	
+	@Transient
+	private UsersDTO user;
+
+	@Transient
+	private LeaveTypeDTO leaveType;
 
 	public LeaveDTO() {
 		super();
@@ -27,6 +33,22 @@ public class LeaveDTO {
 		this.userId = userId;
 		this.leaveTypeId = leaveTypeId;
 		this.daysRemaining = daysRemaining;
+	}
+
+	public UsersDTO getUser() {
+		return user;
+	}
+
+	public void setUser(UsersDTO user) {
+		this.user = user;
+	}
+
+	public LeaveTypeDTO getLeaveType() {
+		return leaveType;
+	}
+
+	public void setLeaveType(LeaveTypeDTO leaveType) {
+		this.leaveType = leaveType;
 	}
 
 	public int getUserId() {

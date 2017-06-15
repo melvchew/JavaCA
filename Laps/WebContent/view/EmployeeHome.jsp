@@ -14,6 +14,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h3>Welcome to LAPS</h3>
 </body>
 </html>

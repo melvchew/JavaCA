@@ -9,4 +9,7 @@
 	<decorator name="employee-theme" page="/decorators/employee-theme.jsp">
 		<pattern>/manager/*</pattern>
 	</decorator>
+	<decorator name="login-theme" page="/decorators/login-theme.jsp">
+		<pattern>/Login</pattern>
+	</decorator>
 </decorators>

@@ -32,4 +32,5 @@ public class LeaveManager {
 	public LeaveDTO getLeaveByUser(UsersDTO user, LeaveTypeDTO leave) throws Exception{
 		return leaveDAO.getLeaveByUser(user,leave);
 	}
+
 }

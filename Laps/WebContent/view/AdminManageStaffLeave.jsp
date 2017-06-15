@@ -31,7 +31,7 @@
 			<tbody>
 				<c:forEach items="${leaveList}" var="leave">
 					<tr>
-						<td>${leave.leaveTypeId}</td>
+						<td>${leave.leaveType.leaveType}</td>
 						<td><input type="text" name="${leave.leaveTypeId}"></td>
 					</tr>
 				</c:forEach>

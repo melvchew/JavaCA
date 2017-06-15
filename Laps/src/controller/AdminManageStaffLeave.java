@@ -11,16 +11,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import data.DAOException;
+import model.DefaultLeaveDTO;
 import model.LeaveDTO;
 import model.LeaveTypeDTO;
 import model.UsersDTO;
 import service.LeaveManager;
+import service.LeaveTypeManager;
 import service.UserManager;
 
 /**
  * Servlet implementation class AdminManageStaffLeave
  */
-@WebServlet("/AdminManageStaffLeave")
+@WebServlet("/admin/managestaffleaves")
 public class AdminManageStaffLeave extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -44,7 +46,11 @@ public class AdminManageStaffLeave extends HttpServlet {
 			UserManager um = new UserManager();
 			UsersDTO user = um.getUser("pete");
 			LeaveManager lm = new LeaveManager();
+			LeaveTypeManager ltm = new LeaveTypeManager();
 			leaveList = lm.getLeave(user);
+			for (LeaveDTO l : leaveList) {
+				l.setLeaveType(ltm.getLeaveType(l.getLeaveTypeId()));		
+			}
 			request.setAttribute("leaveList", leaveList);
 			RequestDispatcher rd = request.getRequestDispatcher("/view/AdminManageStaffLeave.jsp");
 			rd.forward(request, response);

@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import data.UsersDAO;
 import data.UsersDAOImpl;
@@ -63,9 +64,10 @@ public class SubmitLeaveServlet extends HttpServlet {
 			LeaveAppnManager lam = new LeaveAppnManager();
 			DateManager dm = new DateManager();
 			UserManager um = new UserManager();
-
+			HttpSession session = request.getSession();	
+			
 			// UsersDTO user = um.getUser(request.getParameter("username"));
-			UsersDTO user = um.getUser("pete"); //hard coded
+			UsersDTO user = (UsersDTO) session.getAttribute("loggedInUser");//hard coded
 			LeaveTypeManager ltm = new LeaveTypeManager();
 			LeaveTypeDTO lt = ltm.getLeaveType(Integer.parseInt(request.getParameter("leavetype")));
 			LeaveAppnDTO dto = new LeaveAppnDTO();
