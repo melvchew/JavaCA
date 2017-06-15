@@ -25,7 +25,7 @@ import service.UserManager;
 /**
  * Servlet implementation class LoginControl
  */
-@WebServlet("/LoginControl")
+@WebServlet("/Login")
 public class LoginControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -49,30 +49,35 @@ public class LoginControl extends HttpServlet {
 
 			if (um.checkUser(username, password)) {
 
-				if (session.isNew()) {
-					session.setAttribute("uName", username);
-				} else
-					username = (String) session.getAttribute("uName");
+//				if (session.isNew()) {
+//					session.setAttribute("uName", username);
+//				} else
+//					username = (String) session.getAttribute("uName");
 
 				UsersDTO u = um.getUser(username);
 				System.out.println("BREAK****\n\n\n\n\n" + username + "\n\n\n\n\nBREAK******");
+				session.setAttribute("loggedInUser", u);
 				String accesslvl = u.getPosition().getAccessLevel().getAccessLevelName();
+				System.out.println("BREAK****\n\n\n\n\n" + accesslvl + "\n\n\n\n\nBREAK******");
 				RequestDispatcher rd = null;
 				switch (accesslvl) {
 				case "Manager":
-					rd = request.getRequestDispatcher("/view/viewEmpAppn.jsp");///// CHANGE
-																				///// URL
+//					rd = request.getRequestDispatcher("/employee/home");///// CHANGE
+//																				///// URL
+					response.sendRedirect(request.getContextPath() + "/employee/home");
 					break;
 				case "Employee":
-					rd = request.getRequestDispatcher("/view/applyLeave.jsp");///// CHANGE
-																				///// URL
+//					rd = request.getRequestDispatcher("/employee/home");///// CHANGE
+//																				///// URL
+					response.sendRedirect(request.getContextPath() + "/employee/home");
 					break;
-				case "Administrator":
-					rd = request.getRequestDispatcher("/view/CreateUser.jsp");///// CHANGE
-																				///// URL
+				case "Admin":
+//					rd = request.getRequestDispatcher("/admin/home");///// CHANGE
+//																				///// URL
+					response.sendRedirect(request.getContextPath() + "/admin/home");
 					break;
 				}
-				rd.forward(request, response);
+				//rd.forward(request, response);
 			} else {
 				System.out.println("LOGIN UNSUCCESSFUL");
 				RequestDispatcher rd = request.getRequestDispatcher("");///// Login
