@@ -61,6 +61,7 @@ public class ViewLeaveHistoryServlet extends HttpServlet {
 			String id = request.getParameter("id");
 			if ( id != null) {
 				user = um.getUser(id);
+				request.setAttribute("id", id);
 			} else{
 				user = (UsersDTO) session.getAttribute("loggedInUser");
 			}

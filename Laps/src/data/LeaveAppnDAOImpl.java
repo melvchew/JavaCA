@@ -30,7 +30,7 @@ public class LeaveAppnDAOImpl implements LeaveAppnDAO {
 		try {
 			LeaveAppnDTO user = entitymanager.find(LeaveAppnDTO.class, dto.getAppnId());
 			entitymanager.getTransaction().begin();
-			user.setStatus(dto.getStatus());
+			dto.setStatus(dto.getStatus());
 			entitymanager.getTransaction().commit();
 
 		} catch (Exception e) {

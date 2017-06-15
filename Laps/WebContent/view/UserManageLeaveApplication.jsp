@@ -39,6 +39,7 @@
 		</c:choose>
 		<input type="hidden" name="appnId" value="${leave.appnId}" />
 		
+		
 		 <label>Application Id:</label>
 		 <input type="text" name="ApplicationID" value="${leave.appnId }" readonly>
 		 <br/> 

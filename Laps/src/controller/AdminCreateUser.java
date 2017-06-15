@@ -77,7 +77,7 @@ public class AdminCreateUser extends HttpServlet {
 		DefaultLeaveManager dlMan = new DefaultLeaveManager();
 		LeaveManager lMan = new LeaveManager();
 				
-		RequestDispatcher rd = request.getRequestDispatcher("/showusers");
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/showusers");
 		rd.forward(request, response);
 				
 	}

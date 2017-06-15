@@ -63,16 +63,18 @@ public class UserManageLeaveApplication extends HttpServlet {
 		System.out.println("------"+action);
 		System.out.println("--Start Date : --"+request.getParameter("StartDate"));
 		System.out.println("--E Date : --"+ request.getParameter("EndDate"));
-		System.out.println("--Leave Type -- "+ request.getParameter("leaveType"));
+		System.out.println("--Leave Type -- "+ request.getParameter("LeaveType"));
 		
 		DateManager dm = new DateManager();
 		try {
 			LeaveAppnDTO leave = lam.getLeaveAppn(appnId);
+			System.out.println(action);
 			if(action == "UPDATE"){
 				//TODO: update the appn
 				leave.setStartDate(dm.createDate(request.getParameter("StartDate")));
 				leave.setEndDate(dm.createDate(request.getParameter("EndDate")));
 				LeaveTypeDTO leaveType = ltm.getLeaveType(Integer.parseInt(request.getParameter("LeaveType")));
+				System.out.println(leaveType.getLeaveType());
 				leave.setLeaveType(leaveType);
 				leave.setStatus("UPDATED");
 				lam.updateLeaveAppn(leave);
@@ -80,6 +82,7 @@ public class UserManageLeaveApplication extends HttpServlet {
 			} else if(action == "DELETE"){
 				//TODO: update status to DELETE
 				leave.setStatus("DELETED");
+				System.out.println(leave.getStatus());
 				lam.updateLeaveAppn(leave);
 			} else if(action == "CANCEL"){
 				leave.setStatus("CANCELLED");
