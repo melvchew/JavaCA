@@ -60,15 +60,12 @@
 						<li class="dropdown user user-menu">
 							<!-- Menu Toggle Button --> <a href="#" class="dropdown-toggle"
 							data-toggle="dropdown"> <!-- The user image in the navbar-->
-								<img src="../dist/img/user2-160x160.jpg" class="user-image"
-								alt="User Image"> <!-- hidden-xs hides the username on small devices so only the image appears. -->
+
 								<span class="hidden-xs"><%= lguser.getName() %></span>
 						</a>
 							<ul class="dropdown-menu">
 								<!-- The user image in the menu -->
-								<li class="user-header"><img
-									src="../dist/img/user2-160x160.jpg" class="img-circle"
-									alt="User Image">
+								<li class="user-header">
 
 									<p><%= lguser.getName() %> - <%= lguser.getPosition().getJobTitle() %></p></li>
 								<li class="user-footer">
@@ -91,17 +88,7 @@
 
 			<section class="sidebar">
 
-				<div class="user-panel">
-					<div class="pull-left image">
-						<img src="../dist/img/user2-160x160.jpg" class="img-circle"
-							alt="User Image">
-					</div>
-					<div class="pull-left info">
-						<p><%= lguser.getName() %></p>
-						<!-- Status -->
-						<a href="#"> <%= lguser.getPosition().getJobTitle() %></a>
-					</div>
-				</div>
+
 
 
       <!-- Sidebar Menu -->

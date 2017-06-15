@@ -48,10 +48,21 @@
 					<td><c:out value="${i.leaveType.leaveType}" /></td>
 					<td><c:out value="${i.empComments}" /></td>
 
-					<td><a
-						href="<c:url value="/employee/manageleave">
+					<td><c:if test="${empty param[id]}">
+							<a
+								href="<c:url value="/manager/manageleave">
+										<c:param name="id" value="${i.appnId}"/>
+									</c:url>">DETAILS</a>
+						</c:if>
+						
+						<c:if test="${not empty param[id]}">
+							<a
+								href="<c:url value="/employee/manageleave">
 										<c:param name="LeaveAppnId" value="${i.appnId}"/>
-									</c:url>">DETAILS</a></td>
+									</c:url>">DETAILS</a>
+						</c:if>
+						
+						</td>
 				</tr>
 			</c:forEach>
 		</table>
