@@ -14,7 +14,7 @@
 <c:if test="${ param['submit'] == 'Submit' }">
 	<p>The position is inserted!</p>
 </c:if>
-<form action="AdminInsertPosition" method="post">
+<form method="post">
 <table border="2" >
 <tr>
 <td bgcolor="#57C9F4">JobTitle:</td>
@@ -39,7 +39,7 @@
 </table>
 
 </form>
-<a href="AdminViewAllPositions">Check</a>
+<a href="viewpositions">Check</a>
 </center>
 </body>
 </html>

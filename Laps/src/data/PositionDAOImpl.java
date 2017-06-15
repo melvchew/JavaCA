@@ -42,9 +42,9 @@ public class PositionDAOImpl implements PositionDAO {
 	@Override
 	public void deletePosition(PositionDTO dto) throws DAOException {
 		try {
-			PositionDTO user = entitymanager.find(PositionDTO.class, dto.getPositionId());
+			PositionDTO pos = entitymanager.find(PositionDTO.class, dto.getPositionId());
 			entitymanager.getTransaction().begin();
-			// user.setStatus("DELETED");
+			pos.setDeleteFlag(true);
 			entitymanager.getTransaction().commit();
 
 		} catch (Exception e) {
@@ -78,7 +78,7 @@ public class PositionDAOImpl implements PositionDAO {
 		ArrayList<PositionDTO> list = null;
 		try{
 			entitymanager.getTransaction().begin();
-			Query query = entitymanager.createQuery("Select s from PositionDTO s");
+			Query query = entitymanager.createQuery("Select s from PositionDTO s WHERE s.deleteFlag != true");
 			
 			 list = (ArrayList<PositionDTO>)query.getResultList();
 	

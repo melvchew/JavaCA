@@ -16,7 +16,7 @@ import service.UserManager;
 /**
  * Servlet implementation class deleteUser
  */
-@WebServlet("/deluser")
+@WebServlet("/admin/deluser")
 public class AdminDeleteUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -61,7 +61,7 @@ public class AdminDeleteUser extends HttpServlet {
 
 		uMan.deleteUser(u);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/showusers");
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/showusers");
 		rd.forward(request, response);
 		
 	}

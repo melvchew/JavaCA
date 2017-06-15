@@ -17,7 +17,7 @@ import service.UserManager;
 /**
  * Servlet implementation class UpdateUser
  */
-@WebServlet("/upduser")
+@WebServlet("/admin/upduser")
 public class AdminUpdateUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -49,7 +49,7 @@ public class AdminUpdateUser extends HttpServlet {
 			u.setName(request.getParameter("name"));
 			
 			//Need to change!!!! Remaining problem!!!
-			u.setDob(dMan.createDate(request.getParameter("dob").substring(0, 10)));
+			u.setDob(dMan.createDate(request.getParameter("dob")));
 			
 			u.setPhone(request.getParameter("phone"));
 			u.setAddress(request.getParameter("addr"));
@@ -63,7 +63,7 @@ public class AdminUpdateUser extends HttpServlet {
 			e.printStackTrace();
 		}
 				
-		RequestDispatcher rd = request.getRequestDispatcher("/showusers");
+		RequestDispatcher rd = request.getRequestDispatcher("/admin/showusers");
 		rd.forward(request, response);
 	}
 

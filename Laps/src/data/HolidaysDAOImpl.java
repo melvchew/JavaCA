@@ -80,7 +80,7 @@ EntityManager entitymanager = PersistenceManager.INSTANCE.getEntityManager();
 		
 	}
 
-	public HolidaysDTO findHolidayBydate(Timestamp date)	throws Exception{
+	public HolidaysDTO findHolidayBydate(Date date)	throws Exception{
 		
 		HolidaysDTO holidaysDTO=null;
 		try{

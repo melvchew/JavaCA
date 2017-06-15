@@ -26,14 +26,14 @@
 			<tr>
 				<td>${i.index+1}</td>
 
-				<td>${holidays.date}</td>
+				<td><fmt:formatDate pattern="MM/dd/yyyy" value="${holidays.date}" /></td>
 
 				<td>${holidays.description}</td>
 				
 				<td>  
-			    <a href="AdminUpdateHolidays?date=${holidays.date}">Update</a>
-				<a href="AdminInsertHolidays?date=${holidays.date}">Insert</a>
-                <a href="AdminViewAllAndDeleteHolidays?date=${holidays.date}">Delete</a>      
+			    <a href="updateholiday?date=<fmt:formatDate pattern="MM/dd/yyyy" value="${holidays.date}" />">Update</a>
+				<a href="insertholiday">Insert</a>
+                <a href="viewholidays?date=<fmt:formatDate pattern="MM/dd/yyyy" value="${holidays.date}" />">Delete</a>      
 				</td>
 			</tr>
 			

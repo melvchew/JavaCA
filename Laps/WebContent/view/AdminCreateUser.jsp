@@ -9,13 +9,13 @@
 </head>
 <body>
 <h2>Create User</h2>
-<form name="createUserForm" action="/Laps/createuser" method="post">
+<form name="createUserForm" method="post">
 
     User Name: <input type="text" name="uname" /><br>
     Password: <input type="text" name="passwd" /><br>
     Position Id: <input type="text" name="posid" /><br><!-- Need drop down list -->
     Name: <input type="text" name="name" /><br>
-    Birth Date: <input type="text" name="dob" /><br>
+    Birth Date: <input type="text" data-provide="datepicker" name="dob" /><br>
     Phone: <input type="text" name="phone" /><br>
     Address: <input type="text" name="addr" /><br>
     Email: <input type="text" name="email" /><br>

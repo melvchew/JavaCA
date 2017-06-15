@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,12 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.HolidaysDTO;
+import service.DateManager;
 import service.HolidayManager;
 
 /**
  * Servlet implementation class AdminInsertHolidays
  */
-@WebServlet("/AdminInsertHolidays")
+@WebServlet("/admin/insertholiday")
 public class AdminInsertHolidays extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -42,8 +44,10 @@ public class AdminInsertHolidays extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HolidayManager holidayManager=new HolidayManager();
+		DateManager dateManager = new DateManager();
 		String date=request.getParameter("date");
-		Timestamp date1=Timestamp.valueOf(date);
+		Date date1=dateManager.createDate(date);
+		
 		String desp=request.getParameter("Description");
 		HolidaysDTO holidaysDTO=new HolidaysDTO();
 		holidaysDTO.setDate(date1);

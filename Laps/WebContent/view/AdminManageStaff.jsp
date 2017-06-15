@@ -7,7 +7,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Manage Staff</title>
-</head>
 <style>
 table {
     border-collapse: collapse;
@@ -29,7 +28,8 @@ th, td {
 <p>All the current user details.</p>
 <!-- button works Only when run on this.jsp??!!! -->
 
-<button type="button" onclick="javascript:window.location.href='/Laps/view/AdminCreateUser.jsp';">Create User</button>
+
+<a href="/Laps/admin/createuser">Create User</a>
 
 
 <table id="tabUser" style="width: 100%">
@@ -64,8 +64,8 @@ th, td {
   	<td>${ul.email}</td>
   	<td>${ul.managerId}</td>  
   	<td>${ul.otHours}</td>
-  	<td><a href="/Laps/upduser?username=${ul.username}">Update</a></td>
-  	<td><a href="/Laps/deluser?username=${ul.username}">Delete</a></td>
+  	<td><a href="/Laps/admin/upduser?username=${ul.username}">Update</a></td>
+  	<td><a href="/Laps/admin/deluser?username=${ul.username}">Delete</a></td>
   	<!-- Need massage for delete!!!! -->
   	
   	</tr> 

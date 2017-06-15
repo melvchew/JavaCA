@@ -15,11 +15,11 @@
 <c:if test="${ param['submit'] == 'Submit' }">
 	<p>The holiday is updated!</p>
 </c:if>
-<form action="AdminUpdateHolidays" method="post">
+<form method="post">
 <table border="1" >
 <tr>
 <td bgcolor="#57C9F4">Date:</td>
-<td><input name="date" value="${param['date'] }"></td>
+<td><input name="date" type="text" data-provide="datepicker" value="${param['date'] }"></td>
 <td bgcolor="#57C9F4">Description:</td>
 <td><input name="Description" value=""></td>
 </tr>
@@ -35,7 +35,7 @@
 </table>
 
 </form>
-<a href="AdminViewAllAndDeleteHolidays">Check</a>
+<a href="viewholidays">Check</a>
 </center>
 </body>
 </html>

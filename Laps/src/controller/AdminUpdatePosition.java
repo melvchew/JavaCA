@@ -22,7 +22,7 @@ import service.PositionManager;
 /**
  * Servlet implementation class AdminUpdatePosition
  */
-@WebServlet("/AdminUpdatePosition")
+@WebServlet("/admin/updateposition")
 public class AdminUpdatePosition extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -18,10 +18,10 @@ import service.LeaveTypeManager;
  * Servlet implementation class ManageStaffLeaveTypes
  */
 @WebServlet("/ManageStaffLeaveTypes")
-public class ManageStaffLeaveTypes extends HttpServlet {
+public class AdminManageStaffLeaveTypes extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ManageStaffLeaveTypes() {
+	public AdminManageStaffLeaveTypes() {
 		super();
 	}
 

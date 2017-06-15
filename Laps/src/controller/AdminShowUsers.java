@@ -17,7 +17,7 @@ import service.UserManager;
 /**
  * Servlet implementation class ShowUsers
  */
-@WebServlet("/showusers")
+@WebServlet("/admin/showusers")
 public class AdminShowUsers extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
