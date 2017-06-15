@@ -20,7 +20,7 @@ import service.PositionManager;
 /**
  * Servlet implementation class manageDefaultLeaveController
  */
-@WebServlet("/manageDefaultLeaveController")
+@WebServlet("/admin/managedefaultleaves")
 public class AdminManageDefaultLeaveController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
