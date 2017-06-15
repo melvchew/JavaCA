@@ -14,7 +14,7 @@ import service.LeaveAppnManager;
 /**
  * Servlet implementation class LoadClass
  */
-@WebServlet("/ViewEmpApplication")
+@WebServlet("/manager/viewapplications")
 public class ViewEmpApplication extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

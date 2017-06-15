@@ -72,7 +72,7 @@ input[type=text] {
 <body>
 	<h1>Default Leave</h1>
 	<!-- <p>Add the border-bottom property to th and td for horizontal dividers:</p> -->
-	<form method="post" action='/Laps/AdminManageDefaultLeaveController'>
+	<form method="post">
 		<table>
 			<tr>
 				<th>Position</th>

@@ -41,7 +41,7 @@
 					<td><c:out value="${i.leaveType.leaveType}" /></td>
 					<td><c:out value="${i.empComments}" /></td>
 					
-					<td><a href ="<c:url value="/ManageLeaveApplication">
+					<td><a href ="<c:url value="/employee/manageleave">
 										<c:param name="LeaveAppnId" value="${i.appnId}"/>
 									</c:url>">DETAILS</a></td>
 				</tr>

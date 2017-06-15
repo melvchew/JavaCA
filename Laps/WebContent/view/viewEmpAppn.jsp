@@ -33,7 +33,7 @@
 						<td>${appn.endDate}</td>
 						<td>${appn.status}</td>
 						<td><a
-							href="<c:url value="/ManageLeaveApplication">
+							href="<c:url value="/manageleave">
 										<c:param name="id" value="${appn.appnId}"/>
 									</c:url>">
 								Details </a></td>

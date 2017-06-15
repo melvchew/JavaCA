@@ -19,7 +19,7 @@ import service.LeaveTypeManager;
 /**
  * Servlet implementation class UserManageLeaveApplication
  */
-@WebServlet("/UserManageLeaveApplication")
+@WebServlet("/employee/manageleave")
 public class UserManageLeaveApplication extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -39,7 +39,7 @@ public class UserManageLeaveApplication extends HttpServlet {
 		LeaveAppnManager lam = new LeaveAppnManager();
 		
 		
-		int key = 3;//Integer.parseInt(request.getParameter("id"));
+		int key = Integer.parseInt(request.getParameter("LeaveAppnId"));
 		try {
 			LeaveAppnDTO leave = lam.getLeaveAppn(key);
 			request.setAttribute("leave", leave);
@@ -74,10 +74,15 @@ public class UserManageLeaveApplication extends HttpServlet {
 				leave.setEndDate(dm.createDate(request.getParameter("EndDate")));
 				LeaveTypeDTO leaveType = ltm.getLeaveType(Integer.parseInt(request.getParameter("LeaveType")));
 				leave.setLeaveType(leaveType);
+				leave.setStatus("UPDATED");
+				lam.updateLeaveAppn(leave);
 				
 			} else if(action == "DELETE"){
 				//TODO: update status to DELETE
 				leave.setStatus("DELETED");
+				lam.updateLeaveAppn(leave);
+			} else if(action == "CANCEL"){
+				leave.setStatus("CANCELLED");
 				lam.updateLeaveAppn(leave);
 			}
 			
@@ -87,12 +92,12 @@ public class UserManageLeaveApplication extends HttpServlet {
 				// throw some exception
 			}
 
-			leave.setMgrComments(mgrComments);
+			//leave.setMgrComments(mgrComments);
 			
-			if (action.equals("Approve"))
-				leave.setStatus("APPROVED");
-			else
-				leave.setStatus("REJECTED");
+//			if (action.equals("Approve"))
+//				leave.setStatus("APPROVED");
+//			else
+//				leave.setStatus("REJECTED");
 			
 			//need to add or remove remaining leaves
 			

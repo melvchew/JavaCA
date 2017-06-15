@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
 <!DOCTYPE html>
@@ -21,7 +21,7 @@
 
   <link rel="stylesheet" href="../dist/css/skins/skin-blue.min.css">
   
-  <!-- bootstrap datepicker -->
+    <!-- bootstrap datepicker -->
   <link rel="stylesheet" href="../plugins/datepicker/datepicker3.css">
 
   <!--[if lt IE 9]>
@@ -69,10 +69,13 @@
                 <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Bobby Bob - Admin
+                  Bobby Bob - Manager
                 </p>
               </li>
               <li class="user-footer">
+              	<div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">View Leave History</a>
+                </div>
                 <div class="pull-right">
                   <a href="#" class="btn btn-default btn-flat">Sign out</a>
                 </div>
@@ -95,7 +98,7 @@
         <div class="pull-left info">
           <p>Bobby Bob</p>
           <!-- Status -->
-          <a href="#"> Admin</a>
+          <a href="#"> Manager</a>
         </div>
       </div>
 
@@ -105,19 +108,17 @@
         <!-- Optionally, you can add icons to the links -->
         <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-pencil-square-o"></i> <span>Manage</span>
+          <a href="#"><i class="fa fa-calendar-check-o"></i> <span>Leave</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="/Laps/admin/showusers"><i class="fa fa-circle-o"></i>Users</a></li>
-            <li><a href="/Laps/admin/viewpositions"><i class="fa fa-circle-o"></i>Positions</a></li>
-            <li><a href="/Laps/admin/viewholidays"><i class="fa fa-circle-o"></i>Holidays</a></li>
-            <li><a href="/Laps/admin/managedefaultleaves"><i class="fa fa-circle-o"></i>Default Leaves</a></li>
-            <li><a href="/Laps/admin/manageleavetypes"><i class="fa fa-circle-o"></i>Leave Types</a></li>
+            <li><a href="/Laps/employee/submitleave"><i class="fa fa-circle-o"></i>Submit Leave Application</a></li>
+            <li><a href="/Laps/employee/manageleave"><i class="fa fa-circle-o"></i>Manage Leave Applications</a></li>
           </ul>
         </li>
+        <li><a href="/Laps/employee/viewleavehistory"><i class="fa fa-hourglass-end"></i> <span>Leave History</span></a></li>
         <li><a href="#"><i class="fa fa-reply"></i> <span>Sign Out</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
@@ -130,8 +131,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Your Dashboard
-        <small>LAPS</small>
+        Page Header
+        <small>Optional description</small>
       </h1>
     </section>
 
